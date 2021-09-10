@@ -1,0 +1,123 @@
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<h4>Create Survey</h4>
+		</div>
+		<div class="box-body">
+			<form role="form" id="formSurveys" method="POST" enctype="multipart/form-data"
+				{{action "save" on="submit"}}>
+				{{input type="hidden" valueBinding="surveys.id" }}
+				{{!-- <div class="clearfix"><br></div> --}}
+				<div class="row">
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Survey Name</i>
+							</div>
+							{{input class="form-control input-sm" label="nameSurvey" id="nameSurvey" placeholder="Enter Survey Name" valueBinding="surveys.name"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">From Date</i>
+							</div>
+							{{input class="form-control input-sm" label="fromDateSurveys" id="fromDateSurveys" placeholder="Select From Date" valueBinding="surveys.from_date"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">To Date</i>
+							</div>
+							{{input class="form-control input-sm" label="toDateSurveys" id="toDateSurveys" placeholder="Select To Date" valueBinding="surveys.to_date"}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="btn-group btn-group-sm col-md-4 col-sm-12 col-xs-12" data-toggle="buttons">
+						Select campaign for survey<br>
+						{{!-- <div class="clearfix"></div> --}}
+						{{#each cm in model.campaign}}
+						{{#if cm.state}}
+						<label class="btn btn-info btn-flat btn-sm col-md-6 col-sm-12 col-xs-12 active"
+							{{action "createNodeCampaign" cm 'active'}}>{{input  type="checkbox" autocomplete="off" checked=cm.status }}
+							{{cm.name}}</label>
+						{{else}}
+						<label class="btn btn-info btn-flat btn-sm col-md-6 col-sm-12 col-xs-12"
+							{{action "createNodeCampaign" cm 'inactive' }}>{{input  type="checkbox" autocomplete="off" }}
+							{{cm.name}}</label>
+						{{/if}}
+						{{/each}}
+					</div>
+					<div class="btn-group btn-group-sm col-md-8 col-sm-12 col-xs-12" data-toggle="buttons">
+						Select questions for survey<br>
+						{{!-- <div class="clearfix"></div> --}}
+						{{#each sq in model.surveyQuestions}}
+						{{#if sq.state}}
+						<label class="btn btn-info btn-flat btn-sm col-md-12 col-sm-12 col-xs-12 active"
+							style="text-align: left;"
+							{{action "createNodeSurveyQuestions" sq 'active'}}>{{input  type="checkbox" autocomplete="off" checked=sq.status }}
+							{{sq.name}}</label>
+						{{else}}
+						<label class="btn btn-info btn-flat btn-sm col-md-12 col-sm-12 col-xs-12 "
+							style="text-align: left;"
+							{{action "createNodeSurveyQuestions" sq 'inactive' }}>{{input  type="checkbox" autocomplete="off" }}
+							{{sq.name}}</label>
+						{{/if}}
+						{{/each}}
+					</div>
+				</div>
+				<div class="clearfix"><br></div>
+				<div class="row">
+					<div class="col-sm-8 col-sm-12 col-xs-12">
+					</div>
+					<div class="col-sm-2 col-sm-6 col-xs-12">
+						<input type="submit" class="form-control btn btn-abacus btn-flat btn-sm pull-left" value="Save">
+					</div>
+					<div class="col-sm-2 col-sm-6 col-xs-12">
+						<input type="reset" class="form-control btn btn-abacus btn-flat btn-sm pull-right"
+							value="Reset">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div><!-- /.box -->
+</div><!-- /.col -->
+{{!-- <div class="row"> --}}
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<h4>Surveys</h4>
+		</div>
+		<div class="box-body">
+			<div class="tab-pane active" id="surveys-survey" style="position:relative;">
+				<div class="box-body" style="height:400px">
+					<table class="table table-bordered">
+						<tr>
+							<th>Survey</th>
+							<th>From Date</th>
+							<th>To Date</th>
+							<th>Campaigns</th>
+							<th>Questions</th>
+							<th>Users</th>
+						</tr>
+						{{#each modelSurvey in model.surveys}}
+						<tr>
+							<td>{{modelSurvey.name}}</td>
+							<td>{{modelSurvey.from_date}}</td>
+							<td>{{modelSurvey.to_date}}</td>
+							<td>{{modelSurvey.campaigns}}</td>
+							<td>{{modelSurvey.questions}}</td>
+							<td>{{modelSurvey.users}}</td>
+						</tr>
+						{{else}}
+						<tr>
+							<td></td>
+							<td colspan="6"> No Survey Found (click on reload button to check).</td>
+							<td></td>
+						</tr>
+						{{/each}}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

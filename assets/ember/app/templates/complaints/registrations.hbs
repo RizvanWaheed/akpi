@@ -1,0 +1,27 @@
+<div class="nav-tabs-custom" id="tabComplaintRegistration">
+	<!-- Tabs within a box -->
+	<ul class="nav nav-tabs pull-right">
+		<li class="pull-left header"><i class="fa fa-inbox"></i>Complaint Form </li>
+		<li class="btn btn-abacus btn-flat" style="margin:4px;" {{action "myViewComplaint" this }}>
+			<i class="fa fa-refresh"></i> Refresh
+		</li>
+		<li class=""><a href="#complaint-closed" data-toggle="tab"><i
+					class="badge badge-abacus">{{closedComplaintCount}}</i> Closed Complaints </a></li>
+		<li class=""><a href="#complaint-pendings" data-toggle="tab"><i
+					class="badge badge-abacus">{{pendingComplaintCount}}</i> Pendings Complaints </a></li>
+		<li class=""><a href="#complaint-view" data-toggle="tab"><i
+					class="badge badge-abacus">{{viewComplaintCount}}</i> View Complaints</a> </li>
+		<li class="active"><a href="#complaint-enter" data-toggle="tab">Enter Complaint</a></li>
+
+	</ul>
+	<div class="tab-content no-padding">
+		<div class="tab-pane fade in active" id="complaint-enter" style="position: relative;">
+			{{partial 'complaints/complaints_enter'}}</div>
+		<div class="tab-pane fade" id="complaint-view" style="position: relative; ">
+			{{partial 'complaints/complaints_view'}}</div>
+		<div class="tab-pane fade" id="complaint-pendings" style="position: relative; ">
+			{{partial 'complaints/complaints_pendings'}}</div>
+		<div class="tab-pane fade" id="complaint-closed" style="position: relative; ">
+			{{partial 'complaints/complaints_closed'}}</div>
+	</div>
+</div>

@@ -1,0 +1,347 @@
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		{{!-- <div class="box-header"> <h4 >Add Ticket</h4></div> --}}
+		<div class="box-body">
+			<form role="form" id="formActivities" method="POST" enctype="multipart/form-data"
+				{{action "save" on="submit"}}>
+				{{input type="hidden" valueBinding="activities.id" }}
+				{{input type="hidden" valueBinding="activities.monitoring_for_id" }}
+				<div class="row">
+					{{!-- <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+							<div class="input-group input-group-sm">
+								<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Campaign For</i></div>
+								{{view "select" class="form-control input-sm"  content=model.campaign  id="typeEmailDriver" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.monitoring_for_id"  prompt="Select Campaing ..."}}
+							</div>
+						</div>           --}}
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">City</i></div>
+							{{view "select" class="form-control input-sm"  content=cities  id="cities" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.domain_id"  prompt="Select City ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Status</i></div>
+							{{view "select" class="form-control input-sm"  contentBinding="agentStatus"  id="agentStatusId" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.status"  prompt="Select Status ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket ID</i>
+							</div>
+							{{input type="number" class="form-control input-sm" label="ticketId" id="idAgenttickets" placeholder="Enter Ticket ID" valueBinding="activities.ticket_no"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Booking ID</i>
+							</div>
+							{{input type="number" class="form-control input-sm" label="bookingId" id="idAgentBookings" placeholder="Enter Booking ID" valueBinding="activities.booking_no" }}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Reason</i>
+							</div>
+							{{view "select" class="select2 form-control  input-sm" style='width:100%' content=emailDriverReasonSub id="emailDriverReasonSubID" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.email_sub_reason_id"  prompt="Select Sub Reason ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Reason</i></div>
+							{{view "select" class="form-control input-sm" contentBinding="emailDriverReason"  id="emailDriverReason" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.email_reason_id" disabled=true prompt="Select Reason Type ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12 ">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Category</i>
+							</div>
+							{{view "select" class="form-control  input-sm"  content=emailDriverSub id="emailDriverSubID" optionValuePath="content.id" optionLabelPath="content.name" disabled=true valueBinding="activities.email_sub_driver_id"  prompt="Select Sub Category ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Category</i>
+							</div>
+							{{view "select" class="form-control  input-sm " contentBinding="emailDriver"  id="emailDriverID" optionValuePath="content.id" optionLabelPath="content.name" value=activities.email_driver_id  prompt="Select Category Type ..." disbaled=true}}
+						</div>
+					</div>
+
+
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer
+									Adjustment</i></div>
+							{{input class="form-control input-sm" label="customerAdjustmentId" id="customerAdjustmentId" placeholder="Enter Amount" valueBinding="activities.activitiesAdjustments.customer_adjustment"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Captain
+									Adjustment</i></div>
+							{{input class="form-control input-sm" label="captainAdjustmentId" id="captainAdjustmentId" placeholder="Enter Amount" valueBinding="activities.activitiesAdjustments.captain_adjustment"}}
+						</div>
+					</div>
+					{{!--<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+								<div class="input-group input-group-sm">
+								 <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Amount</i></div> --}}
+					{{input type="hidden" class="form-control input-sm" label="amountId" id="idAgentAmount" placeholder="Enter Amount" valueBinding="activities.activitiesAdjustments.amount"}}
+					{{!-- </div>
+							</div> --}}
+					{{!-- <div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+								<div class="input-group input-group-sm">
+									<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer Adjustment</i></div>
+									{{view "select" class="form-control input-sm " contentBinding="adjustment"  id="customerAdjustmentId" optionValuePath="content.id" optionLabelPath="content.name" value=activities.activitiesAdjustments.customer_adjustment  prompt="Select Customer Adjustment ..." }}
+								</div>
+							</div>
+							<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+								<div class="input-group input-group-sm">
+									<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Captain Adjustment</i></div>
+									{{view "select" class="form-control input-sm " contentBinding="adjustment"  id="captainAdjustmentId" optionValuePath="content.id" optionLabelPath="content.name" value=activities.activitiesAdjustments.captain_adjustment  prompt="Select Captain Adjustment ..." }}
+								</div>
+							</div> --}}
+					<div class="form-group form-group-sm  col-md-6 col-sm-12 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket
+									Comments</i></div>
+							{{input class="form-control input-sm" label="amountId" id="idcomment" placeholder="Enter Ticket Comment" valueBinding="activities.activitiesAdjustments.comment"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket
+									Process</i></div>
+							{{view "select" class="form-control  input-sm " contentBinding="ticketProcess"  id="ticketProcessID" optionValuePath="content.id" optionLabelPath="content.name" value=activities.ticket_process  prompt="Select Ticket Process ..." }}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Baby Apollo</i>
+							</div>
+							{{view "select" class="form-control input-sm"  contentBinding="babyApolloForm"  id="babyApolloFormId" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.baby_apollo" }}
+						</div>
+					</div>
+					{{#if escalationShow}}
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer
+									Name</i></div>
+							{{input class="form-control input-sm" label="customerId" id="idCustomerName" placeholder="Enter customer name" valueBinding="activities.activitiesEscalations.name"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer Contact
+									#</i></div>
+							{{input class="form-control input-sm" label="customerName" id="idCustomerContact" placeholder="Enter customer contact" valueBinding="activities.activitiesEscalations.contact"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer
+									Email</i></div>
+							{{input class="form-control input-sm" label="customerEmail" id="idCustomerEmail" placeholder="Enter customer email" valueBinding="activities.activitiesEscalations.email"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Department</i>
+							</div>
+							{{view "select" class="select2 form-control"  content=departments id="emailDepartment" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.activitiesEscalations.department_id"  prompt="Select a department ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub
+									Department</i></div>
+							{{view "select" class="form-control input-sm" contentBinding="subDepartments"  id="emailSubDepartment" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="activities.activitiesEscalations.sub_department_id" prompt="Select a sub-department ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-6 col-sm-12 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Attachment</i>
+							</div>
+							{{input type='file' class="form-control filestyle" data-buttonName="btn-abacus" data-buttonText="Upload" data-icon="true" data-placeholder="File" data-iconName="fa fa-paperclip" data-buttonBefore="true"  name="abacusFile" id="abacusFile" value=activities.activitiesEscalations.attachment  multiple="multiple" }}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-6 col-sm-12 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Comments</i>
+							</div>
+							{{input class="form-control input-sm" label="amountId" id="idcomment2" placeholder="Enter Comment" valueBinding="activities.activitiesEscalations.comment"}}
+						</div>
+					</div>
+					{{/if}}
+
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<input type="submit" class="form-control btn btn-abacus btn-flat btn-sm" value="Save">
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<input type="reset" class="form-control btn btn-abacus btn-flat btn-sm" value="Reset">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div><!-- /.box -->
+</div><!-- /.col -->
+<div class="row">
+	<div class="col-md-12">
+		<div class="nav-tabs-custom tabbable" id="agentsTickets">
+			<!-- Tabs within a box -->
+			<ul class="nav nav-tabs pull-right">
+				<li class="pull-left header"><i class="fa fa-inbox"></i> Tickets Lists</li>
+				<li class="active" {{action "reload" on="mouseUp"}}><a href="#tickets-ticket" data-toggle="tab">Tickets
+						<span class="badge bg-maroon">{{ticketTotals}}</span></a></li>
+				{{!-- <li  {{action "reloadAdjustment" on="mouseUp"}} ><a href="#tickets-adjustment" data-toggle="tab">Adjustment <span class="badge bg-maroon">{{ticketTotals2}}</span></a></li> --}}
+				<li {{action "reloadEscalation" on="mouseUp"}}><a href="#tickets-escalation"
+						data-toggle="tab">Escalation <span class="badge bg-maroon">{{ticketTotals3}}</span></a></li>
+
+				{{!-- <li class="pull-left">
+						<button type="submit" class="btn btn-abacus btn-flat btn-sm pull-right">
+							<i class="fa fa-refresh"></i> Adjustment
+						</button></li>
+					<li class="pull-left">
+						<button type="submit" class="btn btn-abacus btn-flat btn-sm pull-right" >
+							<i class="fa fa-refresh"></i> Tickets            
+						</button>
+					</li>       --}}
+			</ul>
+			<div class="tab-content no-padding">
+				<div class="tab-pane fade in active" id="tickets-ticket" style="position:relative;">
+					<div class="box-body" style="height:200px; overflow-y:auto; overflow-x:hidden">
+						<div class="table-responsive no-padding">
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Campaing</th>
+										<th>Category</th>
+										<th>Reason</th>
+										<th>City</th>
+										<th>Status</th>
+										<th>Ticket ID</th>
+
+									</tr>
+								</thead>
+								<tbody>{{#each agenttickets in teekits}}
+									<tr>
+										<td>{{agenttickets.monitoring_for_id.name}}</td>
+										<td>{{agenttickets.email_driver_id.name}}</td>
+										<td>{{agenttickets.email_reason_id.name}}</td>
+										<td>{{agenttickets.domain_id.name}}</td>
+										<td>{{agenttickets.status}}</td>
+										<td>{{agenttickets.ticket_no}}</td>
+
+									</tr>
+									{{else}}
+									<tr>
+										<td></td>
+										<td colspan="4"> No Ticket Found (click on reload button to check).</td>
+										<td></td>
+									</tr>
+									{{/each}}</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+				{{!-- <div class="tab-pane fade" id="tickets-adjustment" style="position: relative; ">
+					<div class="box-body" style="height:200px; overflow-y:auto; overflow-x:hidden"><div class="table-responsive no-padding" >
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Campaing</th>
+								<th>Category</th>
+								<th>Reason</th>
+								<th>City</th>
+								<th>Status</th>
+								<th>Ticket ID</th>
+								<th>Booking ID</th>
+					  <th>Amount</th>
+								<th>Cust. Adj.</th>
+								<th>Capt. Adj.</th> 
+								<th>Action</th>
+							</tr>
+							</thead>
+							<tbody>{{#each agenttickets in teekits2}}
+							<tr>
+									<td>{{agenttickets.monitoring_for_id.name}}</td>
+									<td>{{agenttickets.email_driver_id.name}}</td>
+									<td>{{agenttickets.email_reason_id.name}}</td>
+									<td>{{agenttickets.domain_id.name}}</td>
+									<td>{{agenttickets.status}}</td>
+									<td>{{agenttickets.ticket_no}}</td>
+									<td>{{agenttickets.booking_no}}</td>
+							 <td>{{agenttickets.activitiesAdjustments.amount}}</td>
+									<td>{{agenttickets.activitiesAdjustments.customer_adjustment}}</td>
+									<td>{{agenttickets.activitiesAdjustments.captain_adjustment}}</td>
+									<td>
+										<button type="button" class="btn btn-abacus btn-flat btn-sm pull-right" {{action "editAdjustment" agenttickets  on="mouseUp"}}>
+											Edit            
+										</button>
+									</td>
+							</tr>
+							{{else}}
+							<tr><td></td><td colspan="6"> No Ticket Found (click on reload button to check).</td><td></td> </tr>
+							{{/each}}</tbody>
+							
+						</table>
+					</div></div>
+				</div> --}}
+				<div class="tab-pane fade" id="tickets-escalation" style="position: relative; ">
+					<div class="box-body" style="height:200px; overflow-y:auto; overflow-x:hidden">
+						<div class="table-responsive no-padding">
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Campaing</th>
+										<th>Category</th>
+										<th>Reason</th>
+										<th>City</th>
+										<th>Status</th>
+										<th>Ticket ID</th>
+										<th>Booking ID</th>
+										{{!--  <th>Amount</th>
+								<th>Cust. Adj.</th>
+								<th>Capt. Adj.</th> --}}
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#each agenttickets in teekits3}}
+									<tr>
+										<td>{{agenttickets.monitoring_for_id.name}} </td>
+										<td>{{agenttickets.email_driver_id.name}} </td>
+										<td>{{agenttickets.email_reason_id.name}} </td>
+										<td>{{agenttickets.domain_id.name}}</td>
+										<td>{{agenttickets.status}}</td>
+										<td>{{agenttickets.ticket_no}}</td>
+										<td>{{agenttickets.booking_no}}</td>
+										{{!-- <td>{{agenttickets.activitiesAdjustments.amount}}</td>
+										<td>{{agenttickets.activitiesAdjustments.customer_adjustment}}</td>
+										<td>{{agenttickets.activitiesAdjustments.captain_adjustment}}</td> --}}
+										<td>
+											<button type="button" class="btn btn-abacus btn-flat btn-sm pull-right"
+												{{action "editEscalation" agenttickets  on="mouseUp"}}>
+												Edit
+											</button>
+										</td>
+									</tr>
+									{{else}}
+									<tr>
+										<td></td>
+										<td colspan="6"> No Ticket Found (click on reload button to check).</td>
+										<td></td>
+									</tr>
+									{{/each}}
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

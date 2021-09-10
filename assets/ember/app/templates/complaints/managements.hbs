@@ -1,0 +1,16 @@
+<div class="nav-tabs-custom" id="tabComplaintManagement">
+<!-- Tabs within a box -->
+	<ul class="nav nav-tabs pull-right">
+	  	<li class="active"><a href="#mgmtcomplaint-Area" data-toggle="tab">Complaints List</a></li>
+	  	<li ><a href="#mgmtcomplaint-Complain" data-toggle="tab">Edit Complaint </a></li>
+	  	<li class="pull-left header"><i class="fa fa-inbox"></i> Complaint Management</li>
+	</ul>
+	<div class="tab-content no-padding">
+	  	<div class="tab-pane fade" id="mgmtcomplaint-Complain" style="position: relative;">
+	  		{{partial 'complaints/mgmteditcomplaints'}}
+	  	</div>
+	  	<div class="tab-pane fade in active" id="mgmtcomplaint-Area" style="position: relative; ">
+	  		{{partial 'complaints/mgmtmycomplaints' }}
+	  	</div>
+	</div>
+</div>

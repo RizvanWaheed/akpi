@@ -1,0 +1,134 @@
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		{{!-- <div class="box-header"> <h4 >Add Ticket</h4></div> --}}
+		<div class="box-body">
+			<form role="form" id="formVOC" method="POST" enctype="multipart/form-data" {{action "save" on="submit"}}>
+				{{input type="hidden" valueBinding="voc.id" }}
+				<div class="row">
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Trials</i></div>
+							{{view "select" class="form-control input-sm"  content=trials  optionValuePath="content.idname" optionLabelPath="content.idname" valueBinding="voc.trials" }}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Connectivity
+									Status</i></div>
+							{{view "select" class="form-control input-sm"  contentBinding="connectivity_status" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.connectivity_status"  prompt="Select Status ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Satisfaction
+									Status</i></div>
+							{{view "select" class="form-control input-sm"  contentBinding="satisfaction_status"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.satisfaction_status"  prompt="Select Satisfaction Status ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Campaign</i>
+							</div>
+							{{view "select" class="form-control input-sm"  contentBinding="monitoring"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.campaign"  prompt="Select Campaign ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Segment</i>
+							</div>
+							{{view "select" class="form-control input-sm"  contentBinding="segment"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.segment"  prompt="Select Segment ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">DSAT Reason</i>
+							</div>
+							{{view "select" class="form-control input-sm"  contentBinding="dsat_reason"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.dsat_reason"  prompt="Select DSAT Reason ..."}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-6 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Category</i>
+							</div>
+							{{view "select" class="form-control input-sm"  contentBinding="category"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="voc.category"  prompt="Select Category ..."}}
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm  col-md-6 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d; text-align:top;"><i
+									class="fa">Customer /
+									Captain Feedback</i>
+							</div>
+							{{textarea class="form-control" rows="6" label="cncfeedback" placeholder="Customer / Captain Feedback" valueBinding="voc.feedback"}}
+						</div>
+					</div>
+					<div class="form-group form-group-sm  col-md-6 col-sm-6 col-xs-12">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon" style="border-color: #38b64d;  text-align:top;"><i
+									class="fa">Agent
+									Suggestion</i>
+							</div>
+							{{textarea class="form-control" rows="4" label="asuggestion" placeholder="Agent Suggestion" valueBinding="voc.suggestion"}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<input type="submit" class="form-control btn btn-abacus btn-flat btn-sm" value="Save">
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<input type="reset" class="form-control btn btn-abacus btn-flat btn-sm" value="Reset">
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<input type="button" {{action "reload" on="click"}}
+							class="form-control btn btn-abacus btn-flat btn-sm" value="Reload">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div id="tblVocs" class="table-responsive no-padding">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Agent</th>
+						<th>Dial Date</th>
+						<th>Trials</th>
+						<th>Connectivity Status</th>
+						<th>Satisfaction Status</th>
+						<th>Campaign</th>
+						<th>Segment</th>
+						<th>DSAT Reason</th>
+						<th>Category</th>
+
+					</tr>
+				</thead>
+				<tbody>{{#each cov in voccov}}
+					<tr>
+						<td>{{cov.created_by.name}}</td>
+						<td>{{cov.created}}</td>
+						<td>{{cov.trials}}</td>
+						<td>{{cov.connectivity_status.name}}</td>
+						<td>{{cov.satisfaction_status.name}}</td>
+						<td>{{cov.campaign.name}}</td>
+						<td>{{cov.segment.name}}</td>
+						<td>{{cov.dsat_reason.name}}</td>
+						<td>{{cov.category.name}}</td>
+
+					</tr>
+					{{else}}
+					<tr>
+						<td></td>
+						<td colspan="4"> No Ticket Found (click on reload button to check).</td>
+						<td></td>
+					</tr>
+					{{/each}}</tbody>
+
+			</table>
+		</div>
+	</div>
+</div>

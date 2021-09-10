@@ -1,0 +1,73 @@
+<!-- <section class="content-header">
+  <h1> MonitoringFors <small>Preview</small> </h1>
+  <ol class="breadcrumb">
+    <li><a href="javascript:;"><i class="fa fa-dashboard"></i> Administrator </a></li>
+    <li class="active">MonitoringFors Information</li>
+  </ol>
+</section>
+<section class="content"> -->
+<div class="row">
+  <div class="col-md-3">
+    <div class="box box-abacus">
+      <!--<div class="box-header">
+                  <h3 class="box-title">Add MonitoringFors</h3>
+                </div> /.box-header -->
+      <div class="box-body">
+        <form Category="form">
+          <div class="box-body">{{input type="hidden" value=Category.id}}
+            <div class="form-group">
+              <label for="name">Campaigns</label>
+              {{input class="form-control" label="Name" placeholder="Enter Campaign" valueBinding=Category.name}}
+            </div>
+            <div class="form-group">
+              <label for="name">Category Level</label>
+              {{input type="number" class="form-control" label="Name" placeholder="Enter Category Level" valueBinding=Category.category_level}}
+            </div>
+          </div><!-- /.box-body -->
+          <div class="box-footer">
+            <button type="button" class="btn btn-abacus btn-flat btn-sm" {{ action "save" Category }}>Save</button>
+            <button type="button" class="btn btn-abacus btn-flat btn-sm" {{ action "reset" }}>Reset</button>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.box -->
+  </div><!-- /.col -->
+  <div class="col-md-9">
+    <div class="box box-abacus">
+      <!--<div class="box-header">
+                  <h3 class="box-title">MonitoringFors List</h3>
+                </div> /.box-header -->
+
+      <div class="box-body" style="height:400px; overflow-y:auto; overflow-x:hidden">
+        <div class="table-responsive no-padding">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 10px">ID</th>
+                <th>Name</th>
+                <th>Category Level</th>
+                <th style="width: 100px">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each Categorys in controller}}
+              <tr>
+                <td>{{Categorys.id}}</td>
+                <td><span class="text-green" style="cursor:pointer" {{ action "edit" Categorys   }}> {{Categorys.name}}
+                  </span> </td>
+                <td> {{Categorys.category_level}} </td>
+                <td><button class="btn btn-danger btn-flat btn-xs" {{action "delete" Categorys  }}>Delete</button></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /.box -->
+
+
+  </div><!-- /.col -->
+
+</div>
+<!-- </section> -->

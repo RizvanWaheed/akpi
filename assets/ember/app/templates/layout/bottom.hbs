@@ -1,0 +1,32 @@
+<footer class="main-footer navbar-footer navbar-fixed-bottom" style="padding:5px;">
+	{{!-- {{action "activateTab" tab.id on="click"}} --}}
+	{{!-- <a href="/akpi/Abacus/bpo/index" role="tab" data-toggle="tab" data-module="9">
+		{{iMyMe.name}}
+	</a> --}}
+	<strong style="font-size: x-large; color: #1aaf17;">
+		{{#link-to "index" }}
+		<i {{bind-attr class="fa fa-user"}}></i>{{tab.name}}
+		{{/link-to}}
+		{{iMyMe.project}} [{{iMyMe.subcampaign}}]
+
+	</strong>
+	{{!-- <strong>Copyright &copy; {{copyRightYear}} <a href="javascript:void(0);">Abacus</a></strong> --}}
+	{{!-- <div class="pull-left hidden-xs"> --}}{{!-- </div> --}}
+	<div class="pull-right">
+		<div class="btn-group">
+			<a href="/akpi/Abacus/logout" class="btn bg-maroon btn-flat">
+				<i class="fa fa-power-off"></i> Logout </a>
+			{{#if isAgent}}
+
+			<a href="javascript:void(0);" class="btn bg-purple btn-flat hidden-xs" {{action "funcCallReload" this}}>
+				<i class="fa fa-clock-o"></i> {{currentStatus}} </a>
+			<a href="javascript:void(0);" class="btn bg-orange btn-flat hidden-xs" {{action "funcCallBreak" this}}>
+				<i class="fa fa-pause"></i> {{breakTime}} </a>
+			<a href="javascript:void(0);" class="btn bg-olive btn-flat hidden-xs" {{action "funcCallResume" this}}>
+				<i class="fa fa-play"></i> {{loginTime}} </a>
+			{{!-- {{#if isAgent}} {{partial 'layout/agentStatus2'}} {{/if}} --}}
+
+			{{/if}}
+		</div>
+	</div>
+</footer>

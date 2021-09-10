@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="box box-abacus">
+      <div class="box-header">
+        <h3 class="box-title">Add Categories</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <form emaildriver="form">
+          <div class="box-body">
+            {{input type="hidden" valueBinding="emailDriver.id" }}
+            {{input type="hidden" valueBinding="emailDriver.status" }}
+            <div class="form-group">
+              <label for="typeEmailDriver">Campaigns</label>
+              {{view "select" class="form-control"  content=monitoredBy optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailDriver.monitoring_for_id"  prompt="Select Campaign..."}}
+            </div>
+
+            <div class="form-group">
+              <label for="name">Category</label>
+              {{input class="form-control" label="Name" placeholder="Enter Category" valueBinding="emailDriver.name" }}
+            </div>
+          </div><!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-abacus btn-flat " {{ action "save" emailDriver}}> Save </button>
+            <button type="submit" class="btn btn-abacus btn-flat pull-right" {{ action "reset" }}> Reset </button>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.box -->
+  </div><!-- /.col -->
+  <div class="col-md-9">
+    <div class="box box-abacus">
+      <div class="box-header">
+        <h3 class="box-title">Categories List</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body" style="height:400px; overflow-y:auto; overflow-x:hidden">
+        <div class="table-responsive no-padding">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 10px">ID</th>
+                <th>Name</th>
+                <th>Campaign</th>
+                <th style="width: 100px">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each emaildrivers in controller}}
+              <tr>
+                <td>{{emaildrivers.id}}</td>
+                <td>{{emaildrivers.name}}</td>
+                <td>{{emaildrivers.monitoring_for_id.name}}</td>
+                <td>
+                  <button class="btn btn-danger btn-flat btn-xs" {{action "delete" emaildrivers }}> Delete </button>
+                  <button class="btn btn-warning btn-flat btn-xs" {{action "edit" emaildrivers }}> Edit </button>
+                </td>
+              </tr>
+              {{/each}}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

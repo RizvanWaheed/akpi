@@ -1,0 +1,23 @@
+{{#if mod.children}}
+{{!-- <li class="treeview" {{bind-attr id=mod.id}} {{action "setMenu" mod.id}}> --}}
+<a href="javascript:;"><i class="fa fa-files-o"></i> <span>{{mod.name}}</span><i
+		class="fa fa-angle-left pull-right"></i></a>
+<ul class="treeview-menu">
+	{{#each modHils in mod.children}}
+	{{navigation-bar mod=modHils}}
+	{{!--   <li {{bind-attr id=modHils.id}} {{action "setMenu" modHils.id }}>{{#link-to modHils.link}}<i class="fa fa-circle-o"></i> {{modHils.name}} {{/link-to}}</li> --}}
+	{{/each}}
+</ul>
+{{!--   {{partial "leftPartial"}} --}}
+{{!-- </li> --}}
+{{else}}
+{{!--  <li {{bind-attr id=mod.id}} {{action "setMenu" mod.id }}> --}}
+{{!-- {{#if mod.url}}
+{{#link-to mod.link mod.id }}<i class="fa fa-circle-o"></i> {{mod.name}} {{/link-to}}
+{{else}}
+{{#link-to mod.link }}<i class="fa fa-circle-o"></i> {{mod.name}} {{/link-to}}
+{{/if}} --}}
+{{#link-to mod.link }}<i class="fa fa-circle-o"></i> {{mod.name}} {{/link-to}}
+
+{{!-- </li> --}}
+{{/if}}

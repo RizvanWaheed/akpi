@@ -1,0 +1,12 @@
+<div class="form-group">
+	{{#each cat in categories}}
+		<div class="input-group">
+			{{input class="form-control input-sm" label="cat.id" idBinding="cat.id" placeholder="Enter Category" valueBinding="cat.name"}} 
+            <div class="input-group-btn"> '
+            	<button class="btn btn-default save-btn" {{action save cat}} ><i class="glyphicon glyphicon-edit"></i></button>
+            	<button class="btn btn-default status-change-btn" {{action delete cat}} ><i class="glyphicon glyphicon-' + status_change_sign + '-sign"></i></button> 
+            	<button class="btn btn-default show-children" {{action chidren cat}}><i class="glyphicon glyphicon-chevron-right"></i></button> 
+            </div> 
+        </div> 
+	{{/each}}
+</div>

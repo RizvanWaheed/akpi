@@ -1,0 +1,104 @@
+<header class="main-header">
+	<a href="javascript:void(0)" class="logo" {{action "toggleButton" this}}>{{appImageUrl 'assets/imgs/abacus.png'}}
+		{{!-- <img src="../assets/imgs/abacus.png" alt="an image" /> --}}
+		<!-- b>c </b>areem<small> Group</small-->
+	</a>
+	<nav class="navbar navbar-static-top" role="navigation">
+		{{!-- <a href="javascript:;" id="toggleButtonContainer" class="sidebar-toggle" data-toggle="offcanvas" role="button" {{action "toggleButton" this}}>
+      <span class="sr-only">Toggle navigation</span>
+    </a> --}}
+		{{!-- {{#if isAgent}}
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-time" role="button"
+			{{action "funcCallReload" this}}> {{currentStatus}} </a>
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-pause" role="button"
+			{{action "funcCallBreak" this}}> {{breakTime}} </a>
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-play" role="button"
+			{{action "funcCallResume" this}}> {{loginTime}} </a> --}}
+		{{!-- {{#if isAgent}} {{partial 'layout/agentStatus2'}} {{/if}} --}}
+		{{!-- {{/if}} --}}
+
+		{{!-- <a href="javascript:;"><img src="../../assets/imgs/abacus.png" height="45px"/></a> --}}
+		<!-- Navbar Right Menu -->
+
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				{{#if isAgent}}
+				<li class="dropdown"><a href="javascript:;" {{action "funcCallReload" this}}><i
+							class="fa fa-refresh"></i></a>
+				</li>
+				{{#if logout}}
+				<li class="dropdown"><a href="javascript:;" {{action "funcCallBreak" this}}><i
+							class="fa fa-pause"></i></a></li>
+				{{else}}
+				<li class="dropdown"><a href="javascript:;" {{action "funcCallResume" this}}><i
+							class="fa fa-play"></i></a></li>
+				{{/if}}
+				{{/if}}
+
+				<li class="dropdown notifications-menu">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<i class="fa fa-bell-o"></i>
+						{{#if notifications}}
+						<span class="label label-warning">{{notificationCount}}</span>
+						{{/if}}
+						{{!-- <span class="label label-warning">10</span> --}}
+					</a>
+					<ul class="dropdown-menu">
+						<li class="header">You have {{notificationCount}} notifications</li>
+						{{#each a in notify }}
+						<li>{{#link-to a.link a.survey_id}} {{a.name}} {{/link-to}} </li>
+						{{/each}}
+					</ul>
+				</li>
+				<li class="dropdown user user-menu">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						{{!--  <img src="../assets/imgs/user2-160x160.jpg" class="user-image" alt="User Image"/> --}}
+						<i class="fa fa-user"></i>
+						<span class="hidden-xs">{{iMyMe.name}}</span>
+					</a>
+					<ul class="dropdown-menu">
+
+						<li class="user-body">
+
+							<div class="text-center">
+								<a href="javascript:void(0)" class="btn btn-abacus btn-block btn-flat col-xs-12"
+									{{action "showResetPasswordModel" target="view"  }}>Reset Password</a>
+
+							</div>
+							<div class="text-center">-</div>
+							<div class=" text-center">
+								<a href="/akpi/Abacus/logout" class="btn btn-abacus btn-block btn-flat col-xs-12">Sign
+									out</a>
+							</div>
+						</li>
+
+					</ul>
+				</li>
+				{{!-- <li>
+						<a href="javascript:void(0);" data-toggle="control-sidebar"  role="button" {{action "controlButton" this}} style="margin-right: -15px;"><i class="fa fa-gears"></i></a>
+				</li> --}}
+			</ul>
+		</div>
+		{{#if media.isMobile}}
+
+		{{/if}}
+		{{#if media.isTablet}}
+
+		{{/if}}
+		{{#if media.isDesktop}}
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<li class="header"><a href="javascript:void(0)" class="project" style="border:0;"> {{project}} </a></li>
+			</ul>
+		</div>
+		{{/if}}
+		{{#if media.isJumbo}}
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<li class="header"><a href="javascript:void(0)" class="project" style="border:0;"> {{project}} </a></li>
+			</ul>
+		</div>
+		{{/if}}
+
+	</nav>
+</header>

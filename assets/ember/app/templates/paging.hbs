@@ -1,0 +1,21 @@
+{{#if hasPages}}
+  <div class="box-footer clearfix">
+    <ul class="pagination pagination-sm no-margin pull-right">
+      {{#if prevPage}}
+        <li><a href="javascript:void(0);" {{action "selectPage" prevPage}}>&laquo;</a></li>
+      {{else}}
+        <li class="disabled"><a>&laquo;</a></li>
+      {{/if}}
+      {{!-- <li ><a href="javascript:void(0);" {{bind-attr disabled=isPrevPage }} {{action "selectPage" prevPage}}>&laquo;</a></li> --}}
+      {{#each pages itemController="page"}}
+        <li {{bind-attr class="active disabled"}}><a href="javascript:void(0);" {{action "selectPage" number}}>{{number}}</a></li>
+      {{/each}}
+      {{!-- <li class="disabled" ><a href="javascript:void(0);" {{bind-attr disabled=isNextPage }} {{action "selectPage" nextPage}}>&laquo;</a></li> --}}
+      {{#if nextPage}}
+        <li><a href="javascript:void(0);" {{action "selectPage" nextPage}}>&raquo;</a></li>
+      {{else}}
+        <li ><a>&raquo;</a></li>
+      {{/if}}
+    </ul>
+  </div>
+{{/if}}

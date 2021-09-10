@@ -1,0 +1,171 @@
+<header class="main-header">
+	<a href="javascript:void(0)" class="logo" {{action "toggleButton" this}}>
+		<span class="logo-mini">{{appImageUrl 'assets/imgs/abacuslogo.png'}}</span>
+		<span class="logo-lg">{{appImageUrl 'assets/imgs/abacus.png'}}</span>
+	</a>
+
+	<nav class="navbar navbar-static-top" role="navigation">
+		{{!-- <ul class="nav navbar-nav" id="dashboard-tabs" role="tabpanel">
+			{{#each tab in tabs}}
+			<li role="presentation" {{bind-attr id=tab.id class="tab.isActive:active"}}
+				{{action "activateTab" tab.id on="click"}}>
+
+				{{#link-to tab.target role="tab" data-toggle="tab"  data-module=tab.id}}
+				<i {{bind-attr class=tab.font}}></i>
+				<span class="hidden-xs">{{tab.name}}</span>
+				{{#unless tab.isRoot}}
+				<button class="close tab-close" {{action "closeTab" tab}}
+					style="margin-top: -12px; margin-right: -8px;">&times;</button>
+				{{/unless}}
+				{{/link-to}} --}}
+
+		{{!-- {{bind-attr href=tab.target}} --}}
+		{{!-- <a {{bind-attr href=tab.id}} {{action "activateTab" tab.id on="click"}} role="tab" data-toggle="tab"
+					{{bind-attr data-module=tab.id}}>
+					{{tab.name}}
+					{{#unless tab.isRoot}}
+					<button class="close tab-close" {{action "closeTab" tab}}
+						style="margin-top: -12px; margin-right: -8px;">
+						&times;
+					</button>
+					{{/unless}}
+				</a> --}}
+		{{!-- </li>
+			{{/each}}
+		</ul> --}}
+
+		{{!-- <a href="javascript:;" id="toggleButtonContainer" class="sidebar-toggle" data-toggle="offcanvas" role="button" {{action "toggleButton" this}}>
+			<span class="sr-only">Toggle navigation</span>
+			</a> --}}
+		{{!-- {{#if isAgent}}
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-time" role="button"
+			{{action "funcCallReload" this}}> {{currentStatus}} </a>
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-pause" role="button"
+			{{action "funcCallBreak" this}}> {{breakTime}} </a>
+		<a href="javascript:void(0);" class="sidebar-toggle sidebar-toggle-play" role="button"
+			{{action "funcCallResume" this}}> {{loginTime}} </a> --}}
+		{{!-- {{#if isAgent}} {{partial 'layout/agentStatus2'}} {{/if}} --}}
+		{{!-- {{/if}} --}}
+		{{!-- <a href="javascript:;"><img src="../../assets/imgs/abacus.png" height="45px"/></a> --}}
+		{{!-- <!-- Navbar Right Menu --> --}}
+
+
+		{{#if media.isMobile}}
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				{{#if isAgent}}
+				{{!-- <li class="dropdown"><a href="javascript:;" {{action "funcCallReload" this}}><i
+							class="fa fa-refresh"></i></a>
+				</li>
+				{{#if logout}}
+				<li class="dropdown"><a href="javascript:;" {{action "funcCallBreak" this}}><i
+							class="fa fa-pause"></i></a></li>
+				{{else}}
+				<li class="dropdown"><a href="javascript:;" {{action "funcCallResume" this}}><i
+							class="fa fa-play"></i></a></li>
+				{{/if}} --}}
+				{{/if}}
+
+				<li class="dropdown notifications-menu">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<i class="fa fa-bell-o"></i>
+						{{#if notifications}}
+						<span class="label label-warning">{{notificationCount}}</span>
+						{{/if}}
+						{{!-- <span class="label label-warning">10</span> --}}
+					</a>
+					<ul class="dropdown-menu">
+						<li class="header">You have {{notificationCount}} notifications</li>
+						{{#each a in notify }}
+						<li>{{#link-to a.link a.survey_id}} {{a.name}} {{/link-to}} </li>
+						{{/each}}
+					</ul>
+				</li>
+				<li class="dropdown user user-menu">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						{{!--  <img src="../assets/imgs/user2-160x160.jpg" class="user-image" alt="User Image"/> --}}
+						<i class="fa fa-user"></i>
+						<span class="hidden-xs">{{iMyMe.name}}</span>
+					</a>
+					<ul class="dropdown-menu">
+
+						<li class="user-body">
+
+							{{!-- <div class="text-center">
+								<a href="javascript:void(0)" class="btn btn-abacus btn-block btn-flat col-xs-12"
+									{{action "showResetPasswordModel" target="view"  }}>Reset Password</a>
+
+							</div> --}}
+							<div class="text-center">-</div>
+							<div class=" text-center">
+								<a href="/akpi/Abacus/logout" class="btn btn-abacus btn-block btn-flat col-xs-12">Sign
+									out</a>
+							</div>
+						</li>
+
+					</ul>
+				</li>
+				{{!-- <li>
+									<a href="javascript:void(0);" data-toggle="control-sidebar"  role="button" {{action "controlButton" this}} style="margin-right: -15px;"><i class="fa fa-gears"></i></a>
+							</li> --}}
+			</ul>
+		</div>
+
+		{{/if}}
+		{{#if media.isTablet}}
+		<ul class="nav navbar-nav" id="dashboard-tabs" role="tabpanel">
+			{{#each tab in tabs}}
+			<li role="presentation" {{bind-attr id=tab.id class="tab.isActive:active"}}
+				{{action "activateTab" tab.id on="click"}}>
+
+				{{#link-to tab.target role="tab" data-toggle="tab"  data-module=tab.id}}
+				<i {{bind-attr class=tab.font}}></i>
+				<span class="hidden-xs">{{tab.name}}</span>
+				{{#unless tab.isRoot}}
+				<button class="close tab-close" {{action "closeTab" tab}}
+					style="margin-top: -12px; margin-right: -8px;">&times;</button>
+				{{/unless}}
+				{{/link-to}}
+			</li>
+			{{/each}}
+		</ul>
+		{{/if}}
+		{{#if media.isDesktop}}
+		<ul class="nav navbar-nav" id="dashboard-tabs" role="tabpanel">
+			{{#each tab in tabs}}
+			<li role="presentation" {{bind-attr id=tab.id class="tab.isActive:active"}}
+				{{action "activateTab" tab.id on="click"}}>
+
+				{{#link-to tab.target role="tab" data-toggle="tab"  data-module=tab.id}}
+				<i {{bind-attr class=tab.font}}></i>
+				<span class="hidden-xs">{{tab.name}}</span>
+				{{#unless tab.isRoot}}
+				<button class="close tab-close" {{action "closeTab" tab}}
+					style="margin-top: -12px; margin-right: -8px;">&times;</button>
+				{{/unless}}
+				{{/link-to}}
+			</li>
+			{{/each}}
+		</ul>
+		{{/if}}
+		{{#if media.isJumbo}}
+		<ul class="nav navbar-nav" id="dashboard-tabs" role="tabpanel">
+			{{#each tab in tabs}}
+			<li role="presentation" {{bind-attr id=tab.id class="tab.isActive:active"}}
+				{{action "activateTab" tab.id on="click"}}>
+
+				{{#link-to tab.target role="tab" data-toggle="tab"  data-module=tab.id}}
+				<i {{bind-attr class=tab.font}}></i>
+				<span class="hidden-xs">{{tab.name}}</span>
+				{{#unless tab.isRoot}}
+				<button class="close tab-close" {{action "closeTab" tab}}
+					style="margin-top: -12px; margin-right: -8px;">&times;</button>
+				{{/unless}}
+				{{/link-to}}
+			</li>
+			{{/each}}
+		</ul>
+		{{/if}}
+
+	</nav>
+</header>

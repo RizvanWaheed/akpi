@@ -1,0 +1,9 @@
+{{#each m in mod}}
+	{{#if m.children}}
+		{{!-- <option {{bind-attr value=m.id}} disabled><hr></option> --}}
+		<optgroup {{bind-attr label=m.name}}>{{select-group mod=m.children }}</optgroup>
+	{{else}}
+		<option {{bind-attr value=m.id}} >{{m.name}}</option>
+		{{!-- [{{m.category}}] --}}
+	{{/if}}
+{{/each}}

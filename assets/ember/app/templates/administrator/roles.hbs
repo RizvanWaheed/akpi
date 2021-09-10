@@ -1,0 +1,57 @@
+<!-- <section class="content-header">
+  <h1> Roles <small>Preview</small> </h1>
+  <ol class="breadcrumb">
+    <li><a href="javascript:;"><i class="fa fa-dashboard"></i> Administrator </a></li>
+    <li class="active">Roles Information</li>
+  </ol>
+</section>
+<section class="content"> -->
+<div class="row">
+	<div class="col-md-3">
+		<div class="box box-abacus">
+			<div class="box-body">
+				<form role="form">
+					<div class="box-body">{{input type="hidden" value=role.id}}
+						<div class="form-group">
+							<label for="name">Role</label>
+							{{input class="form-control" label="Name" placeholder="Enter Role" valueBinding=role.name}}
+						</div>
+					</div><!-- /.box-body -->
+					<div class="box-footer">
+						<button type="button" class="btn btn-abacus btn-flat " {{ action "save" role }}>Save</button>
+						<button type="button" class="btn btn-abacus btn-flat " {{ action "reset" }}>Reset</button>
+					</div>
+				</form>
+			</div>
+		</div><!-- /.box -->
+	</div><!-- /.col -->
+	<div class="col-md-9">
+		<div class="box box-abacus">
+
+			<div class="box-body" style="height:400px">
+				<div class="table-responsive no-padding">
+					{{!-- {{view "data-table" linkBinding="link" columnsBinding="columns" valueBinding="data" }} --}}
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th style="width: 10px">ID</th>
+								<th>Name</th>
+								<th style="width: 100px">Actions</th>
+							</tr>
+						</thead>
+						<tbody>{{#each roles in controller}}
+							<tr>
+								<td>{{roles.id}}</td>
+								<td><span class="text-green" style="cursor:pointer" {{ action "edit" roles   }}>
+										{{roles.name}} </span> </td>
+								<td><button class="btn btn-danger btn-flat btn-xs"
+										{{action "delete" roles  }}>Delete</button></td>
+							</tr>
+							{{/each}}</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!-- /.box -->
+	</div><!-- /.col -->
+</div>
+<!-- </section> -->

@@ -1,0 +1,33 @@
+{{#if mod.children}}
+      
+        <th style="width: 10px; border-right:0px">
+          <input type=checkbox  {{action "allowAccesses" mod.id}}  checked=isCheck />
+          {{!-- {{#if mod.isChecked}}
+            <input type=checkbox  {{action "allowAccesses" mod.id}}  checked=checked  >
+          {{else}} 
+             <input type=checkbox  {{action "allowAccesses" mod.id}}  >
+          {{/if}} --}}
+        </th>
+        <th colspan="2"> {{mod.name}}</th>
+        <th style="width: 100px"> {{#if mod.isChecked}}Allowed {{else}} Blocked {{/if}}</th>
+     
+      {{#each modHils in mod.children}}
+        {{!-- </tr> --}}
+          {{navigation-bar mod=modHils}}
+        {{!--   <li {{bind-attr id=modHils.id}} {{action "setMenu" modHils.id }}>{{#link-to modHils.link}}<i class="fa fa-circle-o"></i> {{modHils.name}} {{/link-to}}</li> --}}
+      {{/each}}
+    
+{{else}}
+    <td style="width: 10px; border-right:0px;"></td>
+    <td >
+       <input type=checkbox  {{action "allowAccesses" mod.id}}  checked=isCheck />
+          {{!-- {{#if mod.isChecked}}
+            <input type=checkbox  {{action "allowAccesses" mod.id}}  checked=checked  >
+          {{else}} 
+             <input type=checkbox  {{action "allowAccesses" mod.id}}  >
+          {{/if}} --}}
+    </td>
+    <td > {{mod.name}}</td>
+    <td style="width: 100px"> {{#if mod.isChecked}}Allowed {{else}} Blocked {{/if}}</td>
+  
+{{/if}}

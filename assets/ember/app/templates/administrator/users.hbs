@@ -1,0 +1,150 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-abacus">
+			<div class="box-header no-padding">
+				{{!-- <div class="col-xs-2"><h3 class="box-title">Users List</h3></div>        
+        <div class="col-xs-3 form-group form-group-sm ">   </div>
+        <div class="col-xs-3 form-group form-group-sm ">   </div>
+        <div class="col-xs-3 form-group form-group-sm">
+          <div class="input-group input-group-sm">
+              
+          </div> 
+        </div>
+        <div class="col-xs-1">
+          <span class="pull-right"></span>
+        </div>   --}}
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Login</th>
+								<th>Role</th>
+								<th>Reporting To</th>
+								<th>City</th>
+								<th>Actions</th>
+							</tr>
+							<tr>
+								<td class="form-group-sm">
+									{{input class="form-control input-xs" placeholder="Enter name to find... " value=search.name  }}
+								</td>
+								<td class="form-group-sm">
+									{{input class="form-control input-xs"  placeholder="Enter login to find... " value=search.login  }}
+								</td>
+								<td class="form-group-sm">
+									{{view "select" class="form-control input-xs" content=roles optionValuePath="content.id" optionLabelPath="content.name" value=search.role_id prompt="Search role..." }}
+								</td>
+								<td class="form-group-sm">
+									{{view "select" class="form-control input-xs" content=reportings optionValuePath="content.id" optionLabelPath="content.name" value=search.reporting_id  prompt="Search reporting to..."  }}
+								</td>
+								<td class="form-group-sm">
+									{{view "select" class="form-control input-sm" content=cities  optionValuePath="content.id" optionLabelPath="content.name" value=search.area_id prompt="Search Location..."}}
+								</td>
+								<td><button class="btn btn-abacus btn-flat btn-xs"
+										{{action "searchUsers" search this}}>Find</button>
+									<button class="btn btn-abacus btn-flat btn-xs" {{action "add" target="view"  }}>Add
+										New</button></td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+			<div class="box-body" style="height:400px; overflow-y:auto; overflow-x:hidden">
+				<div class="table-responsive no-padding">
+					<table class="table table-bordered table-striped">
+						{{!-- <thead>          
+            <tr>
+              <th>Name</th>
+              <th>Login</th>
+              <th>Role</th>
+              <th>Reporting To</th>
+              <th>Actions</th>
+            </tr>
+          </thead> --}}
+						<tbody>
+
+							{{#each users in paginatedContent}}
+							<tr>
+								<td>{{users.name}}</td>
+								<td>{{users.login}}</td>
+								<td>{{users.role_id.name}}</td>
+								<td>{{users.reporting_id.name}}</td>
+								<td>{{users.area_id.name}}</td>
+								<td>
+									<button class="btn btn-success btn-flat btn-xs"
+										{{action "edit" users  target="view"  }}>Edit</button>
+									<button class="btn btn-danger btn-flat btn-xs"
+										{{action "delete" users }}>Delete</button>
+								</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div><!-- /.box-body -->
+			{{partial 'paging'}}
+		</div><!-- /.box -->
+	</div><!-- /.col -->
+</div>
+<div class="modal modal-abacus fade" id="showUserAddEditModel" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<form role="form">
+			<div class="modal-content">
+				<div class="modal-header clearfix">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"><i class="fa fa-bar-chart-o"></i><span>{{addEditUser}} User</span></h4>
+				</div>
+				<div class="modal-body clearfix">
+					{{input type="hidden" id="idUsers" value=user.id }}
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="login">Login ID</label>
+						<div class="input-group input-group-sm">
+							{{input class="form-control" id="loginUsers" placeholder="Enter Login" value=user.login key-up="searchKeyUp" focus-out="searchFocusOut" }}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button"
+									{{action "findDuplicate" this}}> <i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="name">Name</label>
+						{{input class="form-control" label="Name" id="nameUsers" placeholder="Enter Name" value=user.name  disabled=editMode }}
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="password">Password</label>
+						{{input class="form-control" id="passwordUsers" placeholder="Enter Password" value=user.password  disabled=editMode }}
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="role">Role</label>
+						{{view "select" class="form-control" value=user.role_id content=roles id="roleUsers" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a role"  disabled=editMode }}
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="reporting">Reporting To</label>
+						{{view "select" class="form-control" content=reportings id="userUsers" optionValuePath="content.id" optionLabelPath="content.name" value=user.reporting_id  disabled=editMode }}
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="cities">City</label>
+						{{view "select" class="form-control input-sm" contentBinding="cities" id="cityUsers" optionValuePath="content.id" optionLabelPath="content.name" prompt="Location..." valueBinding="user.area_id"  disabled=editMode }}
+					</div>
+					<div class="col-xs-3 form-group form-group-sm ">
+						<label for="cities">Department</label>
+						{{view "select" class="form-control input-sm" contentBinding="departments" id="departmentUsers" optionValuePath="content.id" optionLabelPath="content.name" prompt="Abacus" valueBinding="user.territory_id"  disabled=editMode  }}
+					</div>
+					{{!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="role">Reporting To</label>
+                    {{view "select" class="form-control" content=reportings id="userUsers" optionValuePath="content.id" optionLabelPath="content.name" }}
+                  </div>
+                </div>   --}}
+
+
+				</div>
+				<div class="modal-footer clearfix">
+					<button class="btn btn-abacus btn-flat" {{action "save" user}}
+						{{bind-attr disabled=editMode}}>Save</button>
+					<button class="btn btn-abacus btn-flat" {{action "reset" target="view"  }}>Reset</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</form>
+	</div><!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="box border-left">
+			<div class="box-header">
+			  <h3 class="box-title"> Users </h3>
+			</div><!-- /.box-header -->
+			<div class="box-body box-solid" >
+				<div style="position: relative; overflow: auto; width: auto; height: 385px;" class="slimScrollDiv">
+					<ul class="nav nav-pills nav-stacked">
+						{{#each cuser in model}}
+						<li>
+							{{#link-to 'chat' cuser.id }}
+							  {{#if cuser.online_status}} 
+							    <i class="fa fa-circle-o text-green"> </i>
+							  {{else}}
+							  	<i class="fa fa-circle-o text-danger"></i>
+							  {{/if}} 
+							  {{cuser.name}}
+							{{/link-to}}
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div><!-- /.box -->
+	</div>
+	<div class="col-md-8">
+	  {{outlet}}
+	  {{#if broadCastMessage}}
+	  <div class="box border-left">
+	  	<div class="box-header">
+			  <h3 class="box-title"> Broadcast </h3>
+		</div>
+		<div class="box-body box-solid" > 
+			<div class="input-group">
+	          {{input type="text" class="form-control" value=messageLead action="sendMessageLead" bubbles=false id="chatMessageLead" placeholder="Type Message ..." }}
+	          <span class="input-group-btn">
+	            <button type="button" class="btn btn-primary btn-flat" {{action "sendMessageLead" this}} >Teamleads </button>
+	          </span>
+	        </div>
+		</div>
+		 <div class="box-footer">
+	        <div class="input-group">
+	          {{input type="text" class="form-control" value=messageAgent action="sendMessageAgent" bubbles=false id="chatMessageAgent" placeholder="Type Message ..." }}
+	          <span class="input-group-btn">
+	            <button type="button" class="btn btn-primary btn-flat" {{action "sendMessageAgent" this}} >Agents</button>
+	          </span>
+	        </div>
+	    </div><!-- /.box-footer-->
+	  </div>
+	  {{/if}}
+	</div><!-- /.col -->
+</div>
+
+
+
+
+
+
+
+     

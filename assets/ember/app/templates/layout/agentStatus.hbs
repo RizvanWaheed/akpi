@@ -1,0 +1,54 @@
+<section class="content-header">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="info-box">
+				<span class="info-box-icon bg-aqua"><i class="fa fa-bullhorn"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Current Status</span>
+					<span class="info-box-number">{{currentStatus}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="info-box">
+				<span class="info-box-icon bg-red"><i class="fa fa-clock-o"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Total Break</span>
+					<span class="info-box-number">{{breakTime}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="info-box">
+				<span class="info-box-icon bg-green"><i class="fa fa-clock-o"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Total Time</span>
+					<span class="info-box-number">{{loginTime}}</span>
+				</div>
+			</div>
+		</div>
+		{{!--  
+	  <div class="col-md-2">
+	    <div class="info-box">
+	      <span class="info-box-icon bg-green"><i class="fa fa-clock-o"></i></span>
+	      <div class="info-box-content">
+	        <span class="info-box-text">Total Time</span>
+	        <span class="info-box-number">{{lastActiveTimeFromNow}}</span>
+	      </div>
+	    </div>               
+	  </div> 
+		--}}
+		<div class="col-md-3">
+			<div class="btn-group pull-right">
+				<button id="funcCallReload" type="button" class="btn btn-flat btn-abacus btn-app"
+					{{action "funcCallReload" this}}><i class="fa fa-refresh"></i> Refresh </button>
+				<button id="funcCallBreak" type="button" class="btn btn-flat btn-abacus btn-app"
+					{{action "funcCallBreak" this}} {{bind-attr disabled="!logout" }}><i class="fa fa-pause"></i> Pause
+				</button>
+				<button id="funcCallResume" type="button" class="btn btn-flat btn-abacus btn-app"
+					{{action "funcCallResume" this}} {{bind-attr disabled="logout" }}><i class="fa fa-play"></i> Resume
+				</button>
+			</div>
+		</div>
+	</div>
+</section>

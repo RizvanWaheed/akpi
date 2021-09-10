@@ -1,0 +1,48 @@
+<div class="col-md-2">
+	<div class="info-box-custom">
+		<span class="info-box-icon-custom bg-aqua"><i class="fa fa-bullhorn"></i></span>
+		<div class="info-box-content-custom">
+			<span class="info-box-text">Current Status</span>
+			<span class="info-box-number-custom">{{currentStatus}}</span>
+		</div>
+	</div>
+</div>
+<div class="col-md-2">
+	<div class="info-box-custom">
+		<span class="info-box-icon-custom bg-red"><i class="fa fa-clock-o"></i></span>
+		<div class="info-box-content-custom">
+			<span class="info-box-text">Total Break</span>
+			<span class="info-box-number-custom">{{breakTime}}</span>
+		</div>
+	</div>
+</div>
+<div class="col-md-2">
+	<div class="info-box-custom">
+		<span class="info-box-icon-custom bg-green"><i class="fa fa-clock-o"></i></span>
+		<div class="info-box-content-custom">
+			<span class="info-box-text">Total Time</span>
+			<span class="info-box-number-custom">{{loginTime}}</span>
+		</div>
+	</div>
+</div>
+{{!--  <div class="col-md-2">
+	<div class="info-box">
+		<span class="info-box-icon bg-green"><i class="fa fa-clock-o"></i></span>
+		<div class="info-box-content">
+		<span class="info-box-text">Total Time</span>
+		<span class="info-box-number">{{lastActiveTimeFromNow}}</span>
+		</div>
+	</div>               
+	</div> --}}
+<div class="col-md-2">
+	<div class="btn-group btn-group-sm pull-right">
+		<button id="funcCallReload" type="button" class="btn btn-flat btn-sm btn-abacus  btn-app btn-app-custom"
+			{{action "funcCallReload" this}}><i class="fa fa-refresh"></i> Refresh </button>
+		<button id="funcCallBreak" type="button" class="btn btn-flat btn-sm btn-abacus  btn-app btn-app-custom"
+			{{action "funcCallBreak" this}} {{bind-attr disabled="!logout" }}><i class="fa fa-pause"></i> Pause
+		</button>
+		<button id="funcCallResume" type="button" class="btn btn-flat btn-sm btn-abacus  btn-app btn-app-custom"
+			{{action "funcCallResume" this}} {{bind-attr disabled="logout" }}><i class="fa fa-play"></i> Resume
+		</button>
+	</div>
+</div>

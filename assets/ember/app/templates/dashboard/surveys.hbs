@@ -1,0 +1,104 @@
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<i class="fa fa-bar-chart-o pull-left"></i>
+			<h3 class="box-title pull-left"> Survey Dashboard</h3>
+		</div>
+		<div class="box-body">
+			<div class="row">
+				<div class="form-group form-group-sm">
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						{{view "select" class="form-control input-sm"  content=model  id="monitoring_for_id" optionValuePath="content.id" optionLabelPath="content.name" style="border-left: 0px;" valueBinding="dashboard.survey_id"  prompt="Select a survey ..." }}
+					</div>
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						{{!-- <label for="dates">Date</label>
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon"><i class="fa fa-calendar"></i></div> --}}
+						{{!-- <input type="text" class="form-control" id="rptVoqDateAgent"> --}}
+						{{!-- {{input class="form-control pull-right" valueBinding="report.date" id="dateWiseChartCalendar" }}
+							<span class="input-group-btn">
+								<button class="btn btn-flat btn-abacus"  {{action "searchDataDateWise" report target="view"}} >Monitoring Report</button> --}}
+						{{!-- <!-- <button class="btn btn-flat btn-abacus"  {{action "searchDataDateWiseTableAgent" this target="view" }} >Search</button> -->
+								<button class="btn btn-flat btn-abacus"  {{action "funcCaptainMonitoringReport" this target="view"}} >Captain Monitoring Report</button>
+								<button class="btn btn-flat btn-abacus"  {{action "funcCustomerMonitoringReport" this target="view"}} >Customer Monitoring Report</button> --}}
+						{{!-- </span>
+						</div><!-- /.input group --> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{#if overall}}
+	<div class="box box-abacus">
+		<div class="box-body">
+			<div class="row">
+				{{#each oa in overall}}
+				{{!-- <div class="col-md-3">We are in data</div> --}}
+				<div class="col-md-3 col-sm-6 col-xs-12">{{high-charts content=oa.chartData chartOptions=oa.options}}
+				</div>
+				{{!-- <div class="col-md-9">{{high-charts content=oa.pie.chartData chartOptions=oa.pie.options}}</div> --}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	{{#if overall}}
+	<div class="box box-abacus">
+		<div class="box-body">
+			<div class="row">
+				{{#each oatl in overalltl}}
+				{{!-- <div class="col-md-3">We are in data</div> --}}
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					{{high-charts content=oatl.chartData chartOptions=oatl.options drilldown=oatl.drilldown}}</div>
+				{{!-- <div class="col-md-9">{{high-charts content=oa.pie.chartData chartOptions=oa.pie.options}}</div> --}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	{{#if overall}}
+	<div class="box box-abacus">
+		<div class="box-body">
+			<div class="row">
+				{{#each tl in questions}}
+				<div class="col-md-12">
+					<h3>{{tl.title}}</h3>
+				</div>
+				<div class="col-md-3">
+					{{#each tlpie in tl.pie}}{{high-charts content=tlpie.chartData chartOptions=tlpie.options}}{{/each}}
+				</div>
+				<div class="col-md-9">
+					{{#each tlcolumn in tl.column}}{{high-charts content=tlcolumn.chartData chartOptions=tlcolumn.options}}{{/each}}
+				</div>
+				{{/each}}
+				{{!-- <div class="col-md-12">
+					{{high-charts content=survey.chartData chartOptions=survey.options}}
+				</div> --}}
+			</div>
+		</div>
+	</div>
+	{{/if}}
+
+</div>
+{{!-- <div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<i class="fa fa-bar-chart-o pull-left"></i> 
+			<h3 class="box-title pull-left">Ticket Surveys</h3>
+			<!-- div class="form-group col-xs-4 pull-right"  >
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+					</div>
+					<input type="text" class="form-control pull-right" id="teamleadChartCalendar" placeholder="Select Date Range">
+					<span class="input-group-btn">
+					<button class="btn btn-flat btn-primary" --{--{--action "searchDataTeamleadWiseGraph" target=view--}--}--2  >Search</button>
+					</span>
+				</div>
+				</div -->
+		</div>  
+		<div class="box-body">
+			<div id="dashboardTeamleadScoreGraph"></div>    
+		</div>		
+	</div>
+</div> --}}

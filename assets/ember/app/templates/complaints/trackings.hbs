@@ -1,0 +1,52 @@
+<div class="nav-tabs-custom" id="tabComplaintTracking">
+	<!-- Tabs within a box -->
+	<ul class="nav nav-tabs pull-right">
+		<li class="pull-left header"><i class="fa fa-inbox"></i>Complaint Traking </li>
+		<li class="btn btn-abacus btn-flat" style="margin:4px;" {{action "myViewComplaint" this }}> <i
+				class="fa fa-refresh"></i> Refresh </li>
+		{{!-- <li class=""><a href="#complaint-tArea" data-toggle="tab">Search List</a></li> --}}
+		{{!-- <i class="badge badge-abacus">{{closedComplaintCount}}</i>
+		<i class="badge badge-abacus">{{pendingComplaintCount}}</i>
+		<i class="badge badge-abacus">{{viewComplaintCount}}</i> --}}
+		<li class=""><a href="#complaint-download" data-toggle="tab"> Tracking Downloads</a></li>
+		<li class=""><a href="#complaint-tclosed" data-toggle="tab"> Closed Complaints </a></li>
+		<li class=""><a href="#complaint-tpendings" data-toggle="tab"> Pendings Complaints </a></li>
+		<li class=""><a href="#complaint-tview" data-toggle="tab"> View Complaints</a> </li>
+		<li class="active"><a href="#complaint-tenter" data-toggle="tab">Enter Complaint</a></li>
+	</ul>
+	<div class="tab-content no-padding">
+		<div class="tab-pane fade in active" id="complaint-tenter" style="position: relative;">
+			{{partial 'complaints/complaints_tracks_enter'}}</div>
+		<div class="tab-pane fade" id="complaint-tview" style="position: relative; ">
+			{{partial 'complaints/complaints_view'}}</div>
+		<div class="tab-pane fade" id="complaint-tpendings" style="position: relative; ">
+			{{partial 'complaints/complaints_pendings'}}</div>
+		<div class="tab-pane fade" id="complaint-tclosed" style="position: relative; ">
+			{{partial 'complaints/complaints_closed'}}</div>
+		{{!-- <div class="tab-pane fade " id="complaint-tArea" style="position: relative; ">
+	  		{{partial 'complaints/mgmtmycomplaints' }}
+	  	</div> --}}
+		<div class="tab-pane fade " id="complaint-download" style="position: relative; ">
+			<div class="row">
+				{{!-- <div class="col-md-12"> --}}
+				{{!-- <div class="form-group form-group-sm col-xs-6 ">
+					<label for="cities">City</label>
+					{{view "select" class="form-control input-sm" contentBinding="model" id="cityComplaint" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select Complaint City..." valueBinding="reports.domain_id" disabled=editMode}}
+					</div> --}}
+				<div class="form-group col-xs-6">
+					<label for="regions">Date Range</label>
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+						<input type="text" class="form-control pull-right" id="idTrackingReport"
+							valueBinding="reports.date">
+						<span class="input-group-btn">
+							<button class="btn btn-flat btn-abacus"
+								{{action "trackingComplaintDateWiseDownload" reports }}>Download</button>
+						</span>
+					</div><!-- /.input group -->
+				</div>
+				{{!-- </div> --}}
+			</div>
+		</div>
+	</div>
+</div>

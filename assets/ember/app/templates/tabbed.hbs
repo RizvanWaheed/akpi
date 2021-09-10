@@ -1,0 +1,90 @@
+{{#if logout}}
+{{!-- <div id="dashboard-tabs" role="tabpanel" class="tabbable parentTabs nav-tabs-custom"> --}}
+{{partial 'layout/top'}}
+
+{{partial 'layout/left'}}
+<div class="content-wrapper">
+	{{!-- {{#if isAgent}} {{partial 'layout/agentStatus'}} {{/if}} --}}
+
+	<section class="content">
+		{{!-- <div id="dashboard-tabs" role="tabpanel" class="tabbable parentTabs nav-tabs-custom"> --}}
+		{{!-- <ul id="dashboard-tablists" class="nav nav-tabs">
+				{{#each tab in tabs}}
+				<li role="presentation" {{bind-attr id="tab.id" class="tab.isActive:active"}}> --}}
+		{{!--
+					{{#link-to tab.target role="tab" data-toggle="tab"  data-module=tab.id}}
+					<i class="fa fa-circle-o"></i> {{tab.name}}
+					{{#unless tab.isRoot}}
+					<button class="close tab-close" {{action "closeTab" tab}} style="margin-top: -12px; margin-right: -8px;">&times;</button>
+					{{/unless}}
+					{{/link-to}}
+					--}}
+		{{!-- <a {{bind-attr href=tab.target}} role="tab" data-toggle="tab" {{bind-attr data-module=tab.id}}>
+						{{tab.name}}
+						{{#unless tab.isRoot}}
+						<button class="close tab-close" {{action "closeTab" tab}}
+							style="margin-top: -12px; margin-right: -8px;">
+							&times;
+						</button>
+						{{/unless}}
+					</a>
+				</li>
+				{{/each}} --}}
+		{{!-- <li class="dropdown pull-right">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" aria-expanded="false">
+						<i class="fa fa-user"></i> {{iMyMe.name}} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li role="presentation">{{#link-to 'password' role="menuitem" tabindex="-1" }} Reset Password {{/link-to}}</li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="/abacus/logout" >Sign out</a></li>
+					</ul>
+				</li>  --}}
+		{{!-- </ul> --}}
+		<div id="dashboard-tabcontent" class="tab-content">
+			{{#each tab in tabs}}
+			{{view "render-module" moduleBinding="tab" }}
+			{{/each}}
+		</div>
+		{{!-- </div> --}}
+	</section>
+
+</div>
+{{!-- </div> --}}
+{{else}}
+<div class="lockscreen lockscreen-wrapper">
+	<div class="lockscreen-logo" {{action "funcCallResume" this}}>
+		<a href="javascript:void(0)">{{appImageUrl 'assets/imgs/abacus.png'}}</a><br>
+		<a href="javascript:;"><b>{{iMyMe.name}} <br> <i class="fa fa-play text-abacus"></i></b></a><br>
+		<a href="javascript:;"> {{currentStatus}}: {{breakTime}}</a>
+	</div>
+	<!-- User name -->
+	<div class="lockscreen-name">Click to resume </div>
+
+	<!-- START LOCK SCREEN ITEM -->
+	<div class="lockscreen-item">
+		<!-- lockscreen image -->
+		{{!--<div class="lockscreen-image">
+         <img src="../../dist/img/user1-128x128.jpg" alt="User Image"> 
+        </div>--}}
+		<!-- /.lockscreen-image -->
+		<!-- lockscreen credentials (contains the form) -->
+		{{!-- <form class="lockscreen-credentials">
+          <div class="input-group">
+            <input type="password" class="form-control" placeholder="password">
+            <div class="input-group-btn">
+              <button class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+            </div>
+          </div>
+        </form><!-- /.lockscreen credentials --> --}}
+
+	</div><!-- /.lockscreen-item -->
+	{{!-- <div class="help-block text-center">
+        Enter your password to retrieve your session
+      </div>
+      <div class="text-center">
+        <a href="login.html">Or sign in as a different user</a>
+      </div> --}}
+
+</div><!-- /.center -->
+{{/if}}

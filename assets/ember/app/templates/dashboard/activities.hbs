@@ -1,0 +1,88 @@
+<div class="col-md-12">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<i class="fa fa-bar-chart-o pull-left"></i>
+			<h3 class="box-title pull-left"> Dashboard</h3>
+		</div>
+		<div class="box-body">
+			<div class="row">
+				<div class="form-group form-group-sm">
+					<div class="col-sm-3">
+						{{!-- <label for="monitoring">Monitoring</label>
+						{{view "select" class="form-control input-sm"  content=model  id="monitoring_for_id" optionValuePath="content.id" optionLabelPath="content.name" style="border-left: 0px;" valueBinding="report.monitoring_for_id"  prompt="Select monitoring to ..." }} --}}
+					</div>
+					<div class="col-sm-3">
+						{{!-- <label for="monitoring">Monitoring To</label>
+						{{view "select" class="form-control"  style="border-left: 0px;"   content=monitorBelons  id="monitoring_belongs" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="report.monitoring_belong_id"  prompt="Select Monitoring ..."}} --}}
+					</div>
+					<div class="col-sm-6">
+						{{!-- <label for="dates">Date</label> --}}
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+							{{!-- <input type="text" class="form-control" id="rptVoqDateAgent"> --}}
+							{{input class="form-control pull-right" valueBinding="report.date" id="dateWiseChartCalendar" }}
+							<span class="input-group-btn">
+								<button class="btn btn-flat btn-abacus"
+									{{action "searchDataDateWise" report target="view"}}>Load Dashboard</button>
+								{{!-- <!-- <button class="btn btn-flat btn-abacus"  {{action "searchDataDateWiseTableAgent" this target="view" }} >Search</button> -->
+								<button class="btn btn-flat btn-abacus"  {{action "funcCaptainMonitoringReport" this target="view"}} >Captain Monitoring Report</button>
+								<button class="btn btn-flat btn-abacus"  {{action "funcCustomerMonitoringReport" this target="view"}} >Customer Monitoring Report</button> --}}
+							</span>
+						</div><!-- /.input group -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-8">
+	<div class="box box-abacus">
+		<div class="box-body">
+			<div class="row">
+				{{#each oatl in overalldatewise}}
+				{{!-- <div class="col-md-3">We are in data</div>  no-padding--}}
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					{{high-charts content=oatl.chartData chartOptions=oatl.options drilldown=oatl.drilldown}}</div>
+				{{!-- <div class="col-md-9">{{high-charts content=oa.pie.chartData chartOptions=oa.pie.options}}</div> --}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="box box-abacus">
+		<div class="box-body">
+			<div class="row">
+				{{#each oatl in overallcampaignwise}}
+				{{!-- <div class="col-md-3">We are in data</div> --}}
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					{{high-charts content=oatl.chartData chartOptions=oatl.options drilldown=oatl.drilldown}}</div>
+				{{!-- <div class="col-md-9">{{high-charts content=oa.pie.chartData chartOptions=oa.pie.options}}</div> --}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-12 no-padding">
+	<div class="box box-abacus">
+		<div class="box-header">
+			<i class="fa fa-bar-chart-o pull-left"></i>
+			<h3 class="box-title pull-left">Ticket Activities</h3>
+			<!-- div class="form-group col-xs-4 pull-right"  >
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+					</div>
+					<input type="text" class="form-control pull-right" id="teamleadChartCalendar" placeholder="Select Date Range">
+					<span class="input-group-btn">
+					<button class="btn btn-flat btn-primary" --{--{--action "searchDataTeamleadWiseGraph" target=view--}--}--2  >Search</button>
+					</span>
+				</div>
+				</div -->
+		</div>
+		{{!-- <div class="box-body"> --}}
+
+
+		{{!-- </div>		 --}}
+	</div>
+</div>

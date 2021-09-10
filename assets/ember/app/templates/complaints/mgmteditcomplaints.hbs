@@ -1,0 +1,218 @@
+<div class="row">
+	<form role="form" id="formComplaintLogss" method="POST" enctype="multipart/form-data" {{action "save" on="submit"}}>
+		<div class="col-md-12">
+			<div class="box box-abacus">
+				{{!-- <div class="box-header">
+				  <h3 class="box-title">Create Ticket</h3>
+				</div> --}}
+				<!-- /.box-header -->
+				<div class="box-body">
+					{{input type="hidden" id="idComplaint" value=complaint.id }}
+
+					<div class="form-group-sm col-xs-2 ">
+						<label for="phoneNumber">Complaint No.</label>
+						{{!-- 	<div class="input-group"> --}}
+						{{input class="form-control  input-sm" label="MSISDN" id="msisdnComplaint" placeholder="Complaint Number" value=complaint.id  disabled=editMode }}
+						{{!-- 	<span class="input-group-btn">
+			                	<button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "clog" this}}> <i class="fa fa-search"></i> Search!</button>
+			             	</span>     
+			          	</div> --}}
+					</div>
+					<div class="form-group-sm col-xs-2 ">
+						<label for="phoneNumber">Customer Name</label>
+						{{input class="form-control  input-sm" label="Complainer Name" id="nameComplaint" placeholder="Complainer Name" value=caller.name disabled=editMode }}
+					</div>
+					<div class="form-group-sm col-xs-2 ">
+						<label for="phoneNumber">Contact Mobile #</label>
+						{{input class="form-control  input-sm" label="Contact Mobile" id="mobileComplaint" placeholder="Contact Mobile" value=caller.mobile disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-2">
+						<label for="address">Customer Email</label>
+						{{input class="form-control  input-sm"  id="emailComplaint" placeholder="Complainer Email" value=caller.email disabled=editMode}}
+					</div>
+					<div class="form-group-sm col-xs-2 ">
+						<label for="phoneNumber">Ticket ID</label>
+						{{input class="form-control  input-sm" label="Contact Mobile" id="ticketIdComplaint" placeholder="Ticket ID" value=complaint.ticket_id disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-2">
+						<label for="address">Booking ID</label>
+						{{input class="form-control  input-sm" id="bookingIdComplaint" placeholder="Booking ID" value=complaint.booking_id disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="products">Department </label>
+						{{view "select" class="form-control  input-sm" contentBinding="departments" id="departmentComplaint" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="complaint.department_id" prompt="Department..." disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="models">Sub Departments</label>
+						{{view "select" class="form-control  input-sm" contentBinding="subDepartments" id="subDepartmentComplaint" optionValuePath="content.id" optionLabelPath="content.name" prompt="Sub-Department..." valueBinding="complaint.sub_department_id" disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="problems">Category</label>
+						{{view "select" class="form-control input-sm" contentBinding="categories" id="subDispositionIdComplaint" optionValuePath="content.id" optionLabelPath="content.name" prompt="Category..." valueBinding="complaint.category_id" disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="problems">Sub Category</label>
+						{{view "select" class="form-control input-sm" contentBinding="reasons" id="sub_category_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Sub Category..." valueBinding="complaint.sub_category_id" disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="problems">Reason</label>
+						{{view "select" class="form-control input-sm" contentBinding="reasons" id="reason_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Reason..." valueBinding="complaint.reason_id" disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="problems">Sub Reason</label>
+						{{view "select" class="form-control input-sm" contentBinding="reasons" id="sub_reason_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Sub Reason..." valueBinding="complaint.sub_reason_id" disabled=editMode}}
+					</div>
+
+
+					<div class="form-group form-group-sm col-xs-3 ">
+						<label for="cities">City</label>
+						{{view "select" class="form-control input-sm" contentBinding="cities" id="cityComplaint" optionValuePath="content.id" optionLabelPath="content.name" prompt="Complaint City..." valueBinding="complaint.domain_id" disabled=editMode}}
+					</div>
+
+					<div class="form-group form-group-sm col-xs-3">
+						<label for="status">Current Status</label>
+						{{view "select" id="stateComplaint" class="form-control" content=complaintStates  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="complaint.state_id"  disabled=editMode prompt="Complaint status ..."}}
+					</div>
+
+
+					{{!--   <div class="form-group-sm col-xs-6 ">
+				        <label for="purchaseDate">Purchase Date</label>
+				        <div class="input-group date">
+						    {{input class="form-control " label="Purchase Date" id="purchaseDate" placeholder="Enter Purchase Date" value=complain.purchaseDate }}
+						    <div class="input-group-addon">
+		                    	<i class="fa fa-calendar"></i>
+		                    </div>
+						</div>      
+				    </div> --}}
+
+
+
+
+				</div>
+				<div class="box-footer pull-right">
+
+				</div>
+			</div><!-- /.box -->
+		</div>
+		<div class="col-md-12">
+			<div class="box box-abacus">
+				<div class="box-header">
+					<i class="fa fa-comments-o"></i>
+					<h3 class="box-title">Comment</h3>
+				</div>
+				<div class="box-body">
+					<!-- chat item -->
+					<div class="row">
+						<div class="form-group-sm col-xs-2">
+							{{input type='file' class="form-control filestyle" data-buttonName="btn-abacus" data-buttonText="Upload" data-icon="true" data-placeholder="File" data-iconName="fa fa-paperclip" data-buttonBefore="true"  name="abacusFile" id="abacusFile" value=abacusFile  multiple="multiple" }}
+						</div>
+						<div class="form-group form-group-sm col-xs-2">
+							{{input class="form-control"  placeholder="Employee Name" valueBinding="complaintLog.employee_id"  multiple="multiple" }}
+						</div>
+						<div class="form-group form-group-sm col-xs-2">
+							{{!-- <label for="status">Status</label> --}}
+							{{view "select" id="stateComplaintLog" class="form-control " content=complaintStates  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="complaintLog.state_id"}}
+						</div>
+						<div class="form-group form-group-sm col-xs-4">
+							{{!-- <label for="description">Comment</label> --}}
+							{{textarea class="form-control " id="commComplaint" placeholder="Enter comment" value=complaintLog.remarks}}
+						</div>
+						<div class="form-group-sm col-xs-2">
+							<button type="submit" id="btnComplainEditSave" class="btn btn-abacus btn-flat btn-sm"><i
+									class="fa fa-save"></i> Save </button>
+							<button type="reset" id="btnComplainEditReset" class="btn btn-abacus btn-flat btn-sm"
+								{{!-- {{action "reset" this  }} --}}> <i class="fa fa-undo"></i> Reset </button>
+						</div>
+					</div>
+				</div><!-- /.chat -->
+
+				<div class="box-footer">
+					{{#each com in complaintLogs}}
+					<ul class="timeline">
+
+						{{!--  <li class="time-label"><span class="bg-green">{{com.state}}</span></li> --}}
+						<li>
+							<i class="fa fa-user bg-green"></i>
+							<div class="timeline-item">
+								<span class="time"><i class="fa fa-clock-o"></i> &nbsp; {{com.date}} </span>
+
+								<h3 class="timeline-header"><a href="javascript:;">{{com.user_id.name}}</a> &nbsp;
+									&nbsp; &nbsp; &nbsp;{{com.state}}</h3>
+								<div class="timeline-body">{{com.remarks}}</div>
+								<div class="timeline-footer">
+									<img {{bind-attr src=com.photo }} alt="No Image" width="250px">
+								</div>
+							</div>
+						</li>
+					</ul>
+					{{!--   {{else}}
+		        <p> No Record Found </p> --}}
+					{{/each}}
+				</div>
+			</div>
+		</div><!-- /.col -->
+	</form>
+</div>
+{{!-- <div class="row">
+    <div class="col-md-12">
+        <div class="box box-abacus">
+            <div class="box-header">
+              <h3 class="box-title">Complaints List</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" style="height:400px">
+              <table class="table table-bordered">
+                <tr>
+				  <th >Complaint Number</th>
+                  <th >MSISDN</th>
+                  <th >Complaint Date</th>
+                 
+                  <th >Complainer</th>
+                  <th >Contact #</th>
+                  <th >Complainer Email</th>
+                  <th >Actions</th>
+                </tr>
+				{{#each com in foundComplaints}}
+				<tr>
+					<td>{{com.id}}</td>
+					<td>{{com.msisdn}}</td>
+					<td>{{com.created}}</td>
+				
+					<td>{{com.caller_id.name}}</td>
+				    <td>{{com.caller_id.mobile}}</td>
+				    <td>{{com.caller_id.email}}</td>
+         		    <td>
+         		     {{#if com.status}}
+          		       <button class="btn btn-warning btn-flat btn-xs" {{action "edit" com  }}> <i class="fa  fa-edit" ></i> Edit </button>
+          		     {{else}}
+          		     	<button class="btn btn-warning btn-flat btn-xs" {{action "view" com  }}> <i class="fa  fa-newspaper-o" ></i> Closed </button>
+          		     {{/if}}
+          		    
+          		    </td>
+			    </tr>
+			    {{else}}
+		        <tr><td colspan="5"> No Record Found </td></tr>
+				{{/each}}
+              </table>
+            </div><!-- /.box-body -->
+            {{#if hasPages}}
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+              	{{#if prevPage}}
+		          <li><a href="#" {{action "selectPage" prevPage}}>&laquo;</a></li>
+		        {{else}}
+		          <li class="disabled"><a>&laquo;</a></li>
+		        {{/if}}
+		        {{#each pages itemController="page"}}
+		          <li {{bindAttr class="active disabled"}}><a href="#" {{action "selectPage" number}}>{{number}}</a></li>
+		        {{/each}}
+                {{#if nextPage}}
+		          <li><a href="#" {{action "selectPage" nextPage}}>&raquo;</a></li>
+		        {{else}}
+		          <li class="disabled"><a>&raquo;</a></li>
+		        {{/if}}
+              </ul>
+            </div>
+            {{/if}}
+        </div><!-- /.box -->
+    </div><!-- /.col -->           
+</div> --}}

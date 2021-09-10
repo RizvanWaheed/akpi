@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-abacus">
+      <div class="box-header">
+        <h3 class="box-title">Employees List</h3>
+        <span class="pull-right"><button class="btn btn-abacus btn-flat btn-sm" {{action "add" target="view"  }}>Add
+            New</button></span>
+      </div><!-- /.box-header -->
+      <div class="box-body" style="height:400px">
+        <table class="table table-bordered">
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Reporting To</th>
+            <th>Actions</th>
+          </tr>
+          {{#each employees in paginatedContent}}
+          <tr>
+            <td>{{employees.name}}</td>
+            <td>{{employees.role_id.name}}</td>
+            <td>{{employees.reporting_id.name}}</td>
+            <td>
+              <button class="btn btn-success btn-flat btn-xs" {{action "edit" employees  target="view"  }}>Edit</button>
+              <button class="btn btn-danger btn-flat btn-xs" {{action "delete" employees }}>Delete</button>
+            </td>
+          </tr>
+          {{/each}}
+        </table>
+      </div><!-- /.box-body -->
+      {{#if hasPages}}
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          {{#if prevPage}}
+          <li><a href="#" {{action "selectPage" prevPage}}>&laquo;</a></li>
+          {{else}}
+          <li class="disabled"><a>&laquo;</a></li>
+          {{/if}}
+          {{#each pages itemController="page"}}
+          <li {{bind-attr class="active disabled"}}><a href="#" {{action "selectPage" number}}>{{number}}</a></li>
+          {{/each}}
+          {{#if nextPage}}
+          <li><a href="#" {{action "selectPage" nextPage}}>&raquo;</a></li>
+          {{else}}
+          <li class="disabled"><a>&raquo;</a></li>
+          {{/if}}
+        </ul>
+      </div>
+      {{/if}}
+    </div><!-- /.box -->
+  </div><!-- /.col -->
+</div>
+<div class="modal modal-abacus fade" id="showEmployeeAddEditModel" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">
+          <i class="fa fa-bar-chart-o"></i>
+          <span>Add/Update Employee </span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          {{input type="hidden" id="idEmployees" value=employee.id }}
+
+          <div class="form-group form-group-sm col-xs-3 ">
+            <label for="role">Role</label>
+            {{view "select" class="form-control" value=employee.role_id content=roles id="roleEmployees" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a role"}}
+          </div>
+          <div class="form-group form-group-sm col-xs-3 ">
+            <label for="name">Name</label>
+            {{input class="form-control" label="Name" id="nameEmployees" placeholder="Enter Name" value=employee.name}}
+          </div>
+          <div class="form-group form-group-sm col-xs-3 ">
+            <label for="reporting">Reporting To</label>
+            {{view "select" class="form-control" content=reportings id="employeeEmployees" optionValuePath="content.id" optionLabelPath="content.name" value=employee.reporting_id}}
+          </div>
+          <div class="form-group form-group-sm col-xs-3 ">
+            <label for="cities">City</label>
+            {{view "select" class="form-control input-sm" contentBinding="cities" id="cityEmployees" optionValuePath="content.id" optionLabelPath="content.name" prompt="Location..." valueBinding="employee.area_id" }}
+          </div>
+          <div class="form-group form-group-sm col-xs-3 ">
+            <label for="cities">Department</label>
+            {{view "select" class="form-control input-sm" contentBinding="departments" id="departmentEmployees" optionValuePath="content.id" optionLabelPath="content.name" prompt="Abacus" valueBinding="employee.territory_id" }}
+          </div>
+          {{!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="role">Reporting To</label>
+                    {{view "select" class="form-control" content=reportings id="employeeEmployees" optionValuePath="content.id" optionLabelPath="content.name" }}
+                  </div>
+                </div>   --}}
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        &nbsp;<br />
+        <button class="btn btn-abacus btn-flat" {{action "save" employee}}>Save</button>
+        <button class="btn btn-abacus btn-flat" {{action "reset" target="view"  }}>Reset</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

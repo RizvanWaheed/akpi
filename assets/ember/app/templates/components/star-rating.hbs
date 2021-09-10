@@ -1,0 +1,5 @@
+<ul style="padding: 0">
+	{{#each star in stars}}
+		<li style="color: #38b64d;" {{bind-attr class=":glyphicon star.empty:glyphicon-star-empty:glyphicon-star"}} {{action click star}}></li>
+	{{/each}}
+</ul>

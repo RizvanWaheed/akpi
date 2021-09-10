@@ -1,0 +1,53 @@
+<div id="myDirectChat" class="box  direct-chat direct-chat-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">{{chatUserHead.name}}</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <!-- Conversations are loaded here -->
+      <div class="direct-chat-messages" style="height:350px;">
+        <!-- Message. Default to the left -->
+
+        {{#each chat in chatSource}}{{#if chat.stat}}
+            
+        <div class="direct-chat-msg right">
+          <div class='direct-chat-info clearfix'>
+          <!-- <span class='direct-chat-name pull-right'>{ { chat.from_id.name } }</span> -->
+            <span class='direct-chat-timestamp pull-right'>{{chat.sent}}</span>
+          </div><!-- /.direct-chat-info -->
+          <!--<img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image" /> /.direct-chat-img -->
+          <div class="direct-chat-text">
+          {{chat.message}}
+          </div><!-- /.direct-chat-text -->
+        </div><!-- /.direct-chat-msg -->
+		{{else}}
+        <div class="direct-chat-msg">
+              <div class='direct-chat-info clearfix'>
+              <!--  <span class='direct-chat-name pull-left'> { { chat from_id name } }</span>-->
+                <span class='direct-chat-timestamp pull-left'>{{chat.sent}}</span>
+              </div><!-- /.direct-chat-info -->
+              <!--<img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image" /> /.direct-chat-img -->
+              <div class="direct-chat-text">{{chat.message}}</div><!-- /.direct-chat-text -->
+            </div><!-- /.direct-chat-msg -->
+        
+        {{/if}}{{/each}}
+
+      </div><!--/.direct-chat-messages-->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+        <div class="input-group">
+          {{input type="text" class="form-control" value=message action="sendMessage" bubbles=false id="chatMessage" placeholder="Type Message ..." }}
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-primary btn-flat" {{action "sendMessage" this}} >Send</button>
+          </span>
+        </div>
+    </div><!-- /.box-footer-->
+  </div>
+
+
+
+
+
+
+
+
+     

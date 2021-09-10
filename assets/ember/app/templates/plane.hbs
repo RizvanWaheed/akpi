@@ -1,0 +1,11 @@
+{{partial 'layout/top'}}
+{{partial 'layout/left'}}
+<div class="content-wrapper">
+	{{!-- {{#if isAgent}} {{partial 'layout/agentStatus'}} {{/if}} --}}
+	<section class="content">
+		{{outlet}}
+	</section>
+
+
+	{{#if isAgent}} {{inactivity-warning}} {{/if}}
+</div>
