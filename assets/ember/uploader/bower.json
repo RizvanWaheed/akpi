@@ -1,0 +1,21 @@
+{
+  "name": "ember-uploader",
+  "version": "0.3.7",
+  "main": "ember-uploader.js",
+  "dependencies": {
+    "ember": ">= 1.10.0"
+  },
+  "devDependencies": {
+    "qunit": "~1.13.0",
+    "loader.js": "~1.0.1",
+    "sinon": "~1.12.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
