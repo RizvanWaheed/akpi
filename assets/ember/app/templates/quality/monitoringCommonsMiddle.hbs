@@ -1,0 +1,75 @@
+<div class="nav-tabs-custom">
+	<ul class="nav nav-tabs nav-justified">
+		{{#each qaHead in questions}}
+		<li class="active"><a href="#collaborate-quality-monitoring" data-toggle="tab">
+				{{qaHead.name}} &nbsp; &nbsp; <i class="badge bg-abacus">{{qaHead.value}}%</i></a>
+		</li>
+		{{/each}}
+		<!-- <li class="pull-left header"><i class="fa fa-inbox"></i>Quality Monitoring  </li> -->
+	</ul>
+	<div class="tab-content no-padding">{{#each qaHead in questions}}
+		<div class="tab-pane active" id="collaborate-quality-monitoring" style="position: relative;">
+			<div class="box box-solid">
+				<!-- <div class="box-header with-border"><h3 class="box-title">-</h3></div> -->
+				<div class="box-body">
+					<div class="box-group" id="accordion">
+						{{#each qaHead2 in qaHead.children}}
+						<div class="panel box box-abacus">
+							<div class="box-header with-border no-padding">
+								<h4>
+									<!-- class="box-title" -->
+									<a data-toggle="collapse" data-parent="#accordion" {{bind-attr href=qaHead2.href }}>
+										{{qaHead2.name}}
+									</a>
+								</h4>
+							</div>
+							<div {{bind-attr id=qaHead2.hrefid }} class="panel-collapse collapse">
+								<div class="box-body">
+									<table class="table  table-bordered" style="border-top:0px;">
+										<thead>
+											<tr>
+												<th style="width:15%">Fector</th>
+												<th style="width:30%">Options</th>
+												<th style="width:10%">Score</th>
+												<th>Comments</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each qaHead3 in qaHead2.children}}
+											<tr>
+												<td>{{qaHead3.name}}</td>
+												<td>
+													<div class="btn-group col-md-12 col-sm-12 col-xs-12"
+														data-toggle="buttons">
+														{{#each cmh in qaHead3.children}}
+														{{#if cmh.state}}
+														<label
+															class="btn btn-abacus btn-flat btn-sm col-md-12 col-sm-12 col-xs-12 active"
+															{{action "createNewNode" cmh 'active' qaHead3}}>{{input type="checkbox" autocomplete="off" checked=cmh.state }}
+															{{cmh.name}}</label>
+														{{else}}
+														<label
+															class="btn btn-info btn-flat btn-sm col-md-12 col-sm-12 col-xs-12"
+															{{action "createNewNode" cmh 'inactive' qaHead3 }}>{{input type="checkbox" autocomplete="off" }}
+															{{cmh.name}}</label>
+														{{/if}}
+														{{/each}}</div>
+												</td>
+												<td>{{qaHead3.score}}</td>
+												<td>{{ textarea class="form-control" valueBinding="qaHead3.comment" row="4" }}
+												</td><!-- {//{//qaHead3.comment//}//}// -->
+											</tr>
+											{{/each}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>

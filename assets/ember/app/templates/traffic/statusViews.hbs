@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-abacus">
+			<div class="box-header">
+				<div class="col-md-6">
+					<h3 class="box-title">Agents Stats</h3>
+					<!--  <small class="label pull-right bg-green">Total Tickets: {zzz{zzzticketTotalszz}zz}zz</small> -->
+				</div>
+				<div class="form-group form-group-sm col-md-6 col-sm-6 col-xs-12">
+					{{!-- <label for="user_id" class="col-md-4">Team Lead</label>
+              <div class="col-md-8 input-group">
+              {{view "select" class="form-control input-sm"  contentBinding="traffics"  id="traffic_id" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="traffic"  prompt="Select Teamlead..."}}
+              <span class="input-group-btn">  
+              </span> </div> --}}
+					<button type="submit" class="btn btn-abacus btn-flat btn-sm pull-right" {{action "reload" }}>
+						<i class="fa fa-refresh"></i> Reload
+					</button>
+				</div>
+
+			</div><!-- /.box-header style="height:400px" -->
+			<div class="box-body">
+				<table class="table table-bordered">
+					<tr>
+						{{!-- <th>Force</th> --}}
+						<th>ASM ID</th>
+						<th>User</th>
+						<th>Break</th>
+						<th>Working</th>
+						<th>Total</th>
+						<th>Current Status</th>
+						{{!-- <th>Tickets Count</th> --}}
+					</tr>
+					{{#each tlStatusViews in agentsData}}
+					<tr>
+						{{!-- <td>
+                <button type="submit" class="btn btn-info btn-flat btn-xs pull-right" {{action "logout" tlStatusViews }}><i class="fa fa-logout"></i> Logout
+                </button>
+              </td> --}}
+						<td>{{tlStatusViews.sip}}</td>
+						<td>{{tlStatusViews.name}}</td>
+						<td>{{tlStatusViews.break}}</td>
+						<td>{{tlStatusViews.working}}</td>
+						<td>{{tlStatusViews.total}}</td>
+						<td>{{tlStatusViews.current}}</td>
+						{{!-- <td>{{tlStatusViews.tickets}}</td> --}}
+					</tr>
+					{{else}}
+					<tr>
+						<td></td>
+						<td colspan="4"> No Ticket Found (select traffic and click on reload button to check).</td>
+						<td></td>
+					</tr>
+					{{/each}}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

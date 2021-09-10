@@ -1,0 +1,93 @@
+<div class="box box-abacus">
+    <div class="box-body">
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                {{input type="hidden" id="monitoredByQualityMonitor" valueBinding="monitoredByQualityMonitor"}}
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket No.</i></div>
+                {{input type="number" class="form-control" style="border-left: 0px;" valueBinding="ticketQualityMonitor" id="ticketQualityMonitor" }}
+            </div>
+        </div>
+        <div class="bootstrap-timepicker">
+            <div class="form-group col-sm-3 ">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-addon  input-group-sm" style="border-color: #38b64d;"><i class="fa">Date</i>
+                    </div>
+                    <div class="input-group  input-group-sm">
+                        {{input class="form-control" valueBinding="dateQualityMonitor" id="dateQualityMonitor" }}
+                        <div class="input-group-addon  input-group-sm">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon input-group-sm" style="border-color: #38b64d;"><i class="fa">Time</i>
+                </div>
+                <div class="input-group  bootstrap-timepicker input-group-sm">
+                    {{input class="form-control timepicker" valueBinding="timeQualityMonitor" id="timeQualityMonitor" }}
+                    <div class="input-group-addon input-group-sm">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Agent Name</i></div>
+                {{view "select" class="form-control"  content=agents  id="agentNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="agentNameQualityMonitor" prompt="Select an agent ..."}}
+
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">TL Name.</i></div>
+                {{view "select" class="form-control"  content=teamleads  id="tlNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="tlNameQualityMonitor"  prompt="Select agent TL ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">{{monoBy}} Name</i></div>
+                {{input class="form-control" valueBinding="customerNameQualityMonitor" }}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Language</i></div>
+                {{view "select" class="form-control"  content=emailLanguage id="emailLanguageQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailLanguageQualityMonitor"
+             prompt="Select email language ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Country</i></div>
+                {{view "select" class="form-control"  content=country id="countryQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="countryQualityMonitor"  prompt="Select Country ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">City</i></div>
+                {{view "select" class="form-control"  content=city id="cityQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="cityQualityMonitor"  prompt="Select City ..."}}
+            </div>
+        </div>
+
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Type</i></div>
+                {{view "select" class="form-control"  content=emailType id="emailTypeQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailTypeQualityMonitor"  prompt="Select email type ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Driver</i></div>
+                {{view "select" class="form-control"  content=emailDriver id="emailDriverQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailDriverQualityMonitor"  prompt="Select email driver ..."}}
+            </div>
+        </div>
+
+    </div><!-- /.box-body -->
+</div><!-- /.box -->

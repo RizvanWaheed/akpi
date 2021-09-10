@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-abacus">
+      <div class="box-body">
+        <div class="box-body" style="height:400px">
+          <table class="table table-bordered">
+            <tr>
+              <th>Campaing</th>
+              <th>Category</th>
+              <th>Reason</th>
+              <th>City</th>
+              <th>Status</th>
+              <th>Ticket ID</th>
+            </tr>
+            {{#each agenttickets in teekits}}
+            <tr>
+              <td>{{agenttickets.campaing}}</td>
+              <td>{{agenttickets.edriver}}</td>
+              <td>{{agenttickets.ereason}}</td>
+              <td>{{agenttickets.city}}</td>
+              <td>{{agenttickets.status}}</td>
+              <td><a href="javascript:;" {{action "load" agenttickets }}> {{agenttickets.ticket_no}} </a></td>
+            </tr>
+            {{else}}
+            <tr>
+              <td></td>
+              <td colspan="3"> No Ticket Found (click on reload button to check).</td>
+              <td></td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+    <div class="clearfix"></div>
+
+  </div><!-- /.col -->
+</div>

@@ -1,0 +1,86 @@
+<div class="col-md-12 no-padding">
+  <div class="box box-abacus">
+    <div class="box-header">
+      <h4>Add Rendomizer</h4>
+    </div>
+
+    <div class="box-body">
+      {{input type="hidden" valueBinding="RendomizerId" }}
+      <div class="row">
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+          <label for="monitoring_for">Campaign For</label>
+          {{view "select" class="form-control input-sm"  content=monitoredBy  id="monitoring_for" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="rendomizing.monitoring_for_id"  prompt="Select Campaing ..."}}
+        </div>
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+          <label for="belong_id">Type</label>
+          {{view "select" class="form-control input-sm"  contentBinding="belongs"  id="belong_id" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="rendomizing.belong_id"  prompt="Select Type ..."}}
+        </div>
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+          <label for="user_id">QA Officer</label>
+          {{view "select" class="form-control input-sm"  contentBinding="officer"  id="user_id" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="rendomizing.user_id"  prompt="Select QA Officer ..."}}
+        </div>
+        <div class="form-group form-group-sm  col-md-3 col-sm-6 col-xs-12">
+          <label for="percentage">Ticket %age</label>
+          {{input type="number" class="form-control input-sm" label="percentage" id="percentage" placeholder="Enter %age" valueBinding="rendomizing.percentage"}}
+        </div>
+
+      </div>
+      {{!--  <div class="form-group-sm  col-md-2 col-sm-6 col-xs-12">
+          <label for="ticketId">*</label>
+         
+        </div> --}}
+    </div>
+    <div class="box-footer">
+      {{!--  <div class="col-md-6 col-sm-6 col-xs-12"></div>
+        <div class="col-md-6 col-sm-6 col-xs-12"></div>
+        <div class="col-md-6 col-sm-6 col-xs-12"></div>
+        <div class="col-md-6 col-sm-6 col-xs-12"> --}}
+      <div class="form-group form-group-sm "> <input type="button" class="form-control btn btn-abacus btn-flat btn-sm"
+          {{action "save" rendomizing}} value="Save">
+        {{!--  </div> --}}
+      </div>
+    </div>
+
+  </div><!-- /.box -->
+</div><!-- /.col -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-abacus">
+      <div class="box-header">
+        <div class="col-md-6">
+          <h3 class="box-title">Rendomizer </h3>
+          {{!--  <small class="label pull-right bg-green">Total Tickets: {{ticketTotals}}</small> --}}
+        </div>
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-abacus btn-flat btn-sm pull-right" {{action "reload" }}>
+            <i class="fa fa-refresh"></i> Reload
+          </button>
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body" style="height:400px">
+        <table class="table table-bordered">
+          <tr>
+            <th>Campaing</th>
+            <th>Type</th>
+            <th>QA Officer</th>
+            <th>Percentage</th>
+          </tr>
+          {{#each rendomizings in teekits}}
+          <tr>
+            <td>{{rendomizings.campaing}}</td>
+            <td>{{rendomizings.type}}</td>
+            <td>{{rendomizings.user_id}}</td>
+            <td>{{rendomizings.percentage}}</td>
+          </tr>
+          {{else}}
+          <tr>
+            <td></td>
+            <td colspan="3"> No Assignment (click on reload button to check).</td>
+            <td></td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

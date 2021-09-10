@@ -1,0 +1,106 @@
+<div class="box box-abacus">
+	<div class="box-body">
+		<div class="col-md-3 col-sm-12">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<!-- satisfactionReason -->
+					<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer
+							Satisfaction</i></div>
+					{{view "select" class="form-control" content=satisfaction id="customerSatisfaction" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_satisfaction_id"  prompt="Select ..."}}
+					{{!--  <span class="input-group-btn input-group-sm" style="width: 260px;">
+	                	 {{view "select" class="form-control" content=satisfactionReason id="customerSatisfactionReason" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_satisfaction_reason_id"
+	                	 prompt="Select ..." }}
+	                </span> --}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-12">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<!-- satisfactionReason -->
+					<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Reason for D- Sat</i>
+					</div>
+					{{view "select" class="form-control" content=dissatisfaction id="customerDissatisfaction" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_dissatisfaction_id"  prompt="Select ..."}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-12">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<!-- satisfactionReason -->
+					<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub D-Sat Reason </i>
+					</div>
+					{{view "select" class="form-control" content=subdissatisfaction id="customerSubdissatisfaction" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_subdissatisfaction_id"  prompt="Select ..."}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-12">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon input-group-sm" style="border-color: #38b64d;">
+						<i class="fa">Date</i></div>
+					<div class="input-group input-group-sm">
+						{{input class="form-control" valueBinding="monitoring.date" id="dateQualityMonitor" }}
+						<div class="input-group-addon input-group-sm">
+							<i class="fa fa-calendar"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 ">
+			{{!-- <div class="form-group">
+	                <div class="input-group input-group-sm">    <!-- satisfactionReason -->
+		                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer Satisfaction</i></div>
+		                {{view "select" class="form-control" content=satisfaction id="customerSatisfaction" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_satisfaction_id"  prompt="Select ..."}}
+		                <span class="input-group-btn input-group-sm" style="width: 260px;">
+		                	 {{view "select" class="form-control" content=satisfactionReason id="customerSatisfactionReason" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.customer_satisfaction_reason_id"
+		                	 prompt="Select ..." }}
+		                </span>
+	                </div>
+	                </div> --}}
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+					<!-- satisfactionReason -->
+					<div class="input-group-addon" style="border-color: #38b64d;">
+						<i class="fa">Monitoring Type</i>
+					</div>
+					{{view "select" class="form-control" content=monitoringProcess id="monitoringProcessType" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.monitor_process_type_id" prompt="Select monitoring process type..."}}
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-sm-6 ">
+			<div class="input-group input-group-sm">
+				<!-- satisfactionReason -->
+				<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">General Comment</i></div>
+				{{textarea class="form-control" name="monitoringGeneralComment" id="monitoringGeneralComment" valueBinding="monitoring.general_comment" row="4"}}
+			</div>
+		</div>
+
+		<div class="form-group col-sm-3">
+			<div class="input-group input-group-sm">
+				<div class="input-group-addon" style="border-color: #38b64d;">
+					<i class="fa">Did we resolve your problem?</i>
+				</div>
+				{{view "select" class="form-control" content=monitoringProblem id="problemSolved" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.problem_solved"}}
+			</div>
+		</div>
+		<div class="form-group col-sm-3">
+			<div class="input-group input-group-sm">
+				<div class="input-group-addon" style="border-color: #38b64d;">
+					<i class="fa">How many interactions did it take to resolve</i>
+				</div>
+				{{view "select" class="form-control" content=monitoringInteractions id="interactions" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.interactions"}}
+			</div>
+		</div>
+
+		<div class="form-group col-sm-6 pull-right">
+			<span {{bind-attr class=gainedColor}}>Result: {{monitoring.result}} / Score: {{monitoring.score}}%</span>
+		</div>
+		<div class="form-group col-sm-6 pull-right">
+
+			<button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "save" monitoring}}>Save</button>
+			<button class="btn btn-flat btn-sm" type="button" {{action "reset" this}}>Cancel</button>
+		</div>
+	</div>
+</div>

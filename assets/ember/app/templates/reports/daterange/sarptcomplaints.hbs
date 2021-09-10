@@ -1,0 +1,47 @@
+<div class="box box-abacus">
+	<div class="box-header">
+		<i class="fa fa-bar-chart-o pull-left"></i>
+		<h3 class="box-title pull-left"> Complaint Report</h3>
+	</div>
+	<div class="box-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group form-group-sm col-xs-6 ">
+					<label for="cities">City</label>
+					{{view "select" class="form-control input-sm" contentBinding="model" id="cityComplaint" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select Complaint City..." valueBinding="reports.domain_id" disabled=editMode}}
+				</div>
+				<div class="form-group col-xs-6">
+					<label for="regions">Date Range</label>
+					<div class="input-group input-group-sm">
+
+						<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+						<input type="text" class="form-control pull-right" id="rptVoqDateAgent"
+							valueBinding="reports.date">
+						<span class="input-group-btn">
+							{{!-- <button class="btn btn-flat btn-abacus"  {{action "searchDataDateWiseTableAgent" this target="view" }} >Search</button> --}}
+							<button class="btn btn-flat btn-abacus"
+								{{action "complaintDateWiseDownload" reports }}>Download</button>
+						</span>
+					</div><!-- /.input group -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{!-- <div class="nav-tabs-custom">
+<!-- Tabs within a box -->
+<ul class="nav nav-tabs pull-right">
+  <li class="active"><a href="#complaint_sa_rpt_new" data-toggle="tab">Complaint View</a></li>
+  <!-- li class="active"><a href="#complaint_sa_rpt_inprocess" data-toggle="tab">Inprocess</a></li>
+  <li class="active"><a href="#complaint_sa_rpt_closed" data-toggle="tab">Closed</a></li -->
+
+  <!--li ><a href="#dashboard-cfl-graphical" data-toggle="tab">Graphical</a></li -->
+  <li class="pull-left header"><i class="fa fa-inbox"></i> Complaints Reports </li>
+      
+</ul>
+<div class="tab-content no-padding">
+  <!--div class="chart tab-pane " id="complaint_sa_rpt_new" style="position: relative;">{-{-p-artial 'dashboardcflgraph'-}-}-</div-->
+  <div class="chart tab-pane active" id="complaint_sa_rpt_new"   style="position: relative; ">{{partial 'reports/daterange/sarptcomplaintnew'}}</div>
+ 
+</div>
+</div> --}}

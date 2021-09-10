@@ -1,0 +1,53 @@
+<div class="box box-abacus">
+	<div class="box-header">
+		<i class="fa fa-bar-chart-o pull-left"></i>
+		<h3 class="box-title pull-left"> Quality Monitoring Report</h3>
+	</div>
+	<div class="box-body">
+		<div class="form-group form-group-sm">
+			<div class="col-sm-3">
+				<label for="monitoring">Monitoring</label>
+				{{view "select" class="form-control input-sm"  content=model  id="monitoring_for_id" optionValuePath="content.id" optionLabelPath="content.name" style="border-left: 0px;" valueBinding="report.monitoring_for_id"  prompt="Select monitoring to ..." }}
+			</div>
+			<div class="col-sm-3">
+				<label for="monitoring">Monitoring To</label>
+				{{view "select" class="form-control"  style="border-left: 0px;"   content=monitorBelons  id="monitoring_belongs" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="report.monitoring_belong_id"  prompt="Select Monitoring ..."}}
+			</div>
+			<div class="col-sm-6">
+				<label for="regions">Date</label>
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+					{{!-- <input type="text" class="form-control" id="rptVoqDateAgent"> --}}
+					{{input class="form-control pull-right" valueBinding="report.date" id="rptVoqDateAgent" }}
+					<span class="input-group-btn">
+						<button class="btn btn-flat btn-abacus" {{action "funcMonitoringReport" report}}>Monitoring
+							Report</button>
+						{{!-- <!-- <button class="btn btn-flat btn-abacus"  {{action "searchDataDateWiseTableAgent" this target="view" }} >Search</button> -->
+		      		<button class="btn btn-flat btn-abacus"  {{action "funcCaptainMonitoringReport" this target="view"}} >Captain Monitoring Report</button>
+		      		<button class="btn btn-flat btn-abacus"  {{action "funcCustomerMonitoringReport" this target="view"}} >Customer Monitoring Report</button> --}}
+					</span>
+				</div><!-- /.input group -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{!-- <div class="nav-tabs-custom">
+<!-- Tabs within a box -->
+<ul class="nav nav-tabs pull-right">
+  <li class="active"><a href="#complaint_sa_rpt_new" data-toggle="tab">Download</a></li>
+  <!-- li class="active"><a href="#complaint_sa_rpt_inprocess" data-toggle="tab">Inprocess</a></li>
+  <li class="active"><a href="#complaint_sa_rpt_closed" data-toggle="tab">Closed</a></li -->
+
+  <!--li ><a href="#dashboard-cfl-graphical" data-toggle="tab">Graphical</a></li -->
+  <li class="pull-left header"><i class="fa fa-inbox"></i> Quality Monitoring Report </li>
+      
+</ul>
+<div class="tab-content no-padding">
+  <!--div class="chart tab-pane " id="complaint_sa_rpt_new" style="position: relative;">{-{-p-artial 'dashboardcflgraph'-}-}-</div-->
+  <div class="chart tab-pane active" id="complaint_sa_rpt_new"   style="position: relative; ">{{partial 'reports/daily/rptqltymonitoringstab1'}}</div>
+ 
+</div>
+</div>
+ --}}

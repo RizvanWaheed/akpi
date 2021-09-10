@@ -1,0 +1,85 @@
+<div class="box box-abacus">
+	<div class="box-header">
+		<i class="fa fa-bar-chart-o pull-left"></i>
+		<h3 class="box-title pull-left"> Agent Attendence Report</h3>
+	</div>
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-4 form-group form-group-sm">
+				<label for="monitoring">Campaign</label>
+				{{view "select" class="form-control input-sm"  content=model.campaigns  id="monitoring_for_id" optionValuePath="content.id" optionLabelPath="content.name" style="border-left: 0px;" valueBinding="report.campaign_id"  prompt="Select campaign  ..." }}
+			</div>
+			<div class="col-sm-4 form-group form-group-sm">
+				<label for="monitoring">Shift Timings</label>
+				{{view "select" class="form-control input-sm"  style="border-left: 0px;"   content=model.shiftTimings  id="shiftTimings_id" optionValuePath="content.name" optionLabelPath="content.name" valueBinding="report.shift_timings"  prompt="Select Shift Timings ..."}}
+			</div>
+			<div class="col-sm-4 form-group form-group-sm">
+				<label for="regions">Select Date</label>
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+					{{input class="form-control pull-right" valueBinding="report.date" id="dateAgentAttendenceReportDaily" }}
+					{{!-- <span class="input-group-btn">
+						<button class="btn btn-flat btn-abacus"  {{action "saveAgentAttendenceReportDaily" report}} >Daily Download</button>
+						<button class="btn btn-flat btn-abacus"  {{action "saveAgentAttendenceReportHourly" report}} >Hourly Download</button>
+						<button class="btn btn-flat btn-abacus"  {{action "saveAgentAttendenceReportLoginLogout" report}} >Login & Logout Download
+						</button>
+					</span> --}}
+				</div><!-- /.input group -->
+			</div>
+			<div class="col-sm-6 form-group form-group-sm">
+				<div class="input-group input-group-sm">
+					<span class="input-group-btn">
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport' }}>Daily
+							Download</button>
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport2'}}>Hourly
+							Download</button>
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport3'}}>Login &
+							Logout Download
+						</button>
+					</span>
+				</div><!-- /.input group -->
+			</div>
+			<div class="col-sm-6 form-group form-group-sm">
+				<div class="input-group input-group-sm">
+					<span class="input-group-btn">
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport4'}}>Daily
+							Shift</button>
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport5'}}>Hourly
+							Shift</button>
+						<button class="btn btn-flat btn-abacus"
+							{{action "downloadAgentAttendenceReport" report 'agentAttendenceMonitoringReport6'}}>Login &
+							Logout Shift</button>
+					</span>
+				</div><!-- /.input group -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{!-- <div class="nav-tabs-custom">
+	<ul class="nav nav-tabs pull-right">
+		
+		<li class="active"><a href="#agent_attendence_report_daily" data-toggle="tab">Daily</a></li>
+		<li ><a href="#agent_attendence_report_hourly" data-toggle="tab">Hourly</a></li>
+		<li ><a href="#agent_attendence_report_login_logout" data-toggle="tab">Login & Logout</a></li>
+		
+		<li class="pull-left header"><i class="fa fa-inbox"></i> Agent Attendence Report </li>
+	</ul>
+	<div class="tab-content no-padding">
+	  	<div class="tab-pane active" id="agent_attendence_report_daily" style="position:relative;">
+	  		{{partial 'reports/daily/rptagentmonitoringstab1'}}
+	  	</div>
+	  	<div class="tab-pane" id="agent_attendence_report_hourly" style="position:relative;">
+	  		{{partial 'reports/daily/rptagentmonitoringstab2'}}
+	  	</div>
+	  	<div class="tab-pane" id="agent_attendence_report_login_logout" style="position:relative;">
+	  		{{partial 'reports/daily/rptagentmonitoringstab3'}}
+	  	</div>
+	</div>
+</div> --}}

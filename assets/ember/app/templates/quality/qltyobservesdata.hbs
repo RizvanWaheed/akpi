@@ -1,0 +1,453 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-abacus">
+			<div class="box-body">
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						{{input type="hidden" id="monitoredByQualityMonitor" valueBinding="monitoredByQualityMonitor"}}
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket No.</i></div>
+						{{input type="number" class="form-control" style="border-left: 0px;" valueBinding="ticketQualityMonitor" id="ticketQualityMonitor" }}
+					</div>
+				</div>
+				<div class="bootstrap-timepicker">
+					<div class="form-group col-sm-3 ">
+						<div class="input-group input-group-sm">
+							<div class="input-group-addon  input-group-sm" style="border-color: #38b64d;"><i
+									class="fa">Date</i></div>
+							<div class="input-group  input-group-sm">
+								{{input class="form-control" valueBinding="dateQualityMonitor" id="dateQualityMonitor" }}
+								<div class="input-group-addon  input-group-sm">
+									<i class="fa fa-calendar"></i>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon input-group-sm" style="border-color: #38b64d;"><i
+								class="fa">Time</i></div>
+						<div class="input-group  bootstrap-timepicker input-group-sm">
+							{{input class="form-control timepicker" valueBinding="timeQualityMonitor" id="timeQualityMonitor" }}
+							<div class="input-group-addon input-group-sm">
+								<i class="fa fa-clock-o"></i>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Agent Name</i></div>
+						{{view "select" class="form-control"  content=agents  id="agentNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="agentNameQualityMonitor" prompt="Select an agent ..."}}
+
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">TL Name.</i></div>
+						{{view "select" class="form-control"  content=teamleads  id="tlNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="tlNameQualityMonitor"  prompt="Select agent TL ..."}}
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">{{monoBy}} Name</i>
+						</div>
+						{{input class="form-control" valueBinding="customerNameQualityMonitor" }}
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Language</i>
+						</div>
+						{{view "select" class="form-control"  content=emailLanguage id="emailLanguageQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailLanguageQualityMonitor"
+		                 prompt="Select email language ..."}}
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Country</i></div>
+						{{view "select" class="form-control"  content=country id="countryQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="countryQualityMonitor"  prompt="Select Country ..."}}
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">City</i></div>
+						{{view "select" class="form-control"  content=city id="cityQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="cityQualityMonitor"  prompt="Select City ..."}}
+					</div>
+				</div>
+
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Type</i></div>
+						{{view "select" class="form-control"  content=emailType id="emailTypeQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailTypeQualityMonitor"  prompt="Select email type ..."}}
+					</div>
+				</div>
+				<div class="form-group col-sm-3 ">
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Email Driver</i>
+						</div>
+						{{view "select" class="form-control"  content=emailDriver id="emailDriverQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="emailDriverQualityMonitor"  prompt="Select email driver ..."}}
+					</div>
+				</div>
+
+			</div><!-- /.box-body -->
+		</div><!-- /.box -->
+		<div class="nav-tabs-custom">
+			<ul class="nav nav-tabs nav-justified">
+				<li class="active"><a href="#resolution-quality-monitoring" data-toggle="tab">
+						Resolution &nbsp; &nbsp; <i class="badge bg-abacus">{{gainedResulution}}%</i></a></li>
+
+				<!-- <li class="pull-left header"><i class="fa fa-inbox"></i>Quality Monitoring  </li> -->
+			</ul>
+			<div class="tab-content no-padding">
+				<div class="tab-pane active" id="resolution-quality-monitoring" style="position: relative;">
+					<table class="table  table-bordered" style="border-top:0px;">
+						<tbody>
+							<tr>
+								<th style="width:40%">Attribute</th>
+								<th style="width:15%">Factor</th>
+								<th style="width:10%">Score</th>
+								<th>Comments</th>
+							</tr>
+							<tr>
+								<td>Addressed with Dear and then the customers name</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="dearCustomer" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="dearCustomer"}}
+											</span>
+										</div><!-- /.input group -->
+									</div>
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="dearCustomerScore" id="dearCustomerScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="dearCustomerComment" id="dearCustomerComment" valueBinding="dearCustomerComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Well laid out in well-spaced paragraphs</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="wellSpaced" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="wellSpaced"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="wellSpacedScore" id="wellSpacedScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="wellSpacedComment" id="wellSpacedComment" valueBinding="wellSpacedComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Sop Followed</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="sopFollowed" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="sopFollowed"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="sopFollowedScore" id="sopFollowedScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="sopFollowedComment" id="sopFollowedComment" valueBinding="sopFollowedComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Replied in same language of captain (Small & Easy words) </td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="smallEasyWords" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="smallEasyWords"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="smallEasyWordsScore" id="smallEasyWordsScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="smallEasyWordsComment" id="smallEasyWordsComment" valueBinding="smallEasyWordsComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Reply did not have any spelling mistakes </td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="spellingMistakes" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="spellingMistakes"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="spellingMistakesScore" id="spellingMistakesScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="spellingMistakesComment" id="spellingMistakesComment" valueBinding="spellingMistakesComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Response was clear and easy to understand </td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="clearResponse" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="clearResponse"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="clearResponseScore" id="clearResponseScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="clearResponseComment" id="clearResponseComment" valueBinding="clearResponseComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Reason of Credit mentioned</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="creditMentioned" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="creditMentioned"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="creditMentionedScore" id="creditMentionedScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="creditMentionedComment" id="creditMentionedComment" valueBinding="creditMentionedComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Closing confirmation</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="closingConfirmation" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="closingConfirmation"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="closingConfirmationScore" id="closingConfirmationScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="closingConfirmationComment" id="closingConfirmationComment" valueBinding="closingConfirmationComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Accuracy of the information provided/ Internal Notes properly mentioned</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="internalNotes" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="internalNotes"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="internalNotesScore" id="internalNotesScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="internalNotesComment" id="internalNotesComment" valueBinding="internalNotesComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Email did not have any grammatical error</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="notGrammaticalError" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="notGrammaticalError"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="notGrammaticalErrorScore" id="notGrammaticalErrorScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="notGrammaticalErrorComment" id="notGrammaticalErrorComment" valueBinding="notGrammaticalErrorComment" row="4"}}
+								</td>
+							</tr>
+							<tr>
+								<td>Disposition Properly tagged in CRM</td>
+								<td>
+									<div class="form-group">
+										<div class="input-group input-group-sm ">
+											<div class="input-group-addon" style="background-color:#f2eded;"><i
+													class="fa">1.</i></div>
+											{{input class="form-control disabled" value="Answer" readonly="true" }}
+											<span class="input-group-btn" style="width: 70px;">
+												{{view "select" class=" btn btn-abacus btn-flat btn-sm"  content=conditionYesNo  id="inDispositionCRM" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="inDispositionCRM"}}
+											</span>
+										</div>
+									</div><!-- /.input group -->
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										{{input class="form-control disabled" readonly="readonly" valueBinding="inDispositionCRMScore" id="inDispositionCRMScore" readonly="true" }}
+										<div class="input-group-addon" style="background-color:#f2eded;">
+											<i class="fa">%</i>
+										</div>
+									</div>
+								</td>
+								<td>{{textarea class="form-control" name="inDispositionCRMComment" id="inDispositionCRMComment" valueBinding="inDispositionCRMComment" row="4"}}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="box box-abacus">
+			<div class="box-body">
+				<div class="col-sm-6 ">
+					<div class="form-group">
+						<div class="input-group input-group-sm">
+							<!-- satisfactionReason -->
+							<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Customer
+									Satisfaction</i></div>
+							{{view "select" class="form-control" content=satisfaction id="customerSatisfaction" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="customerSatisfaction"  prompt="Select ..."}}
+							<span class="input-group-btn input-group-sm" style="width: 260px;">
+								{{view "select" class="form-control" content=satisfactionReason id="customerSatisfactionReason" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="customerSatisfactionReason"
+		                	 prompt="Select ..." }}
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group input-group-sm">
+							<!-- satisfactionReason -->
+							<div class="input-group-addon" style="border-color: #38b64d;">
+								<i class="fa">Monitoring process type</i>
+							</div>
+							{{view "select" class="form-control" content=monitoringProcess id="monitoringProcessType" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoringProcessType" prompt="Select monitoring process type..."}}
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="form-group col-sm-6 ">
+					<div class="input-group input-group-sm">
+						<!-- satisfactionReason -->
+						<div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">General Comment</i>
+						</div>
+						{{textarea class="form-control" name="monitoringGeneralComment" id="monitoringGeneralComment" valueBinding="monitoringGeneralComment" row="4"}}
+					</div>
+				</div>
+				<div class="form-group col-sm-3">
+					<span {{bind-attr class=gainedColor}}>Result {{gainedMadel}} / Score {{gainedTotal}}</span>
+				</div>
+				<div class="form-group col-sm-3">
+					<div class="input-group input-group-sm">
+						<!-- satisfactionReason -->
+						<div class="input-group-addon" style="border-color: #38b64d;">
+							<i class="fa">Fatal?</i>
+						</div>
+						{{view "select" class="form-control" content=monitoringFatal id="monitoringFatalType" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoringFatalType"}}
+					</div>
+				</div>
+				<div class="form-group col-sm-6 pull-right">
+					<button class="btn btn-abacus btn-flat btn-sm" type="button"
+						{{action "funcSaveMonitorActivity" this}}>Save</button>
+					<button class="btn btn-flat btn-sm" type="button"
+						{{action "funcResetCallActivity" this}}>Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div><!-- /.col -->
+</div>

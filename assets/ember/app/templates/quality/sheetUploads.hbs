@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-md-12">
+    <form class="form" role="form" id="formAqmsUpload" method="POST" enctype="multipart/form-data">
+      <div class="box box-solid">
+        <div class="box-body">
+          <div class="box-group" id="accordion">
+            <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+            <div class="panel box box-primary">
+              <div class="box-header with-border">
+                <h4 class="box-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                    class="collapsed">
+                    <i class="fa fa-upload"></i> File Upload
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
+                <div class="box-body">
+                  <table id="sampleUploadsBAE" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Date<br><small>(Month/Date/FullYear)</small></th>
+                        <th>Time<br><small>(Hour:Minute:Second)</small></th>
+                        <th>Call ID</th>
+                        <th>Queue</th>
+                        <th>Agent ID</th>
+                        <th>Agent</th>
+                        <th>Phone Number</th>
+                        <th>New Disposition</th>
+                        <th>DB Source</th>
+                        <th>User ID</th>
+                        <th>Captain ID</th>
+                        <th>Booking ID</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td colspan="14" width="100%">
+                          <div class="form-group form-group-sm  col-sm-3 ">
+                            {{view "select" class="form-control input-sm"  content=model  id="typeEmailDriver" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring_for_id"  prompt="Select Campaing ..."}}
+                          </div>
+                          <div class="col-sm-3 form-group form-group-sm ">
+                            <div class="input-group input-group-sm ">
+                              {{ input type='file' class="form-control filestyle" data-buttonName="btn-primary" data-buttonText="Upload" data-icon="true" data-placeholder="abacus voice file" data-iconName="fa fa-upload" name="aqmsuploadFile" id="aqmsuploadFile" value=aqmsuploadFile1 valueBinding="files[]" multiple="multiple" }}
+                              <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat btn-sm" type="button"
+                                  {{action "uploadCallDataFile" "aqmsuploadFile" "monitoring_for_id"}}>Save
+                                  File</button>
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {{!-- <div class="panel box box-danger">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                            <i class="fa fa-upload"></i> TCS Consignment File
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                        <div class="box-body">
+                          <table id="sampleUploadsBAE" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                              <tr>
+                                <th>Date <br><small>(Month/Date/FullYear Hour:Minute:Second)</small></th>
+                                <th>SR No</th>
+                                <th>PKG Date <br><small>(Month/Date/FullYear)</small></th>
+                                <th>ATM No</th>
+                                <th>CN No</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5" width="100%">
+                                  <div class="form-group input-group ">
+                                    {{ input type='file' class="form-control filestyle" data-buttonName="btn-primary" data-buttonText="Upload" data-icon="true" data-placeholder="TCS consignment file" data-iconName="fa fa-upload" name="atmtcsconsignmentbookinguploadFile" id="atmtcsconsignmentbookinguploadFile" value=fsatmuploadFile2 valueBinding="files[]" multiple="multiple" }}
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-primary btn-flat" type="button" {{action "uploadAtmBookingFile" "atmtcsconsignmentbookinguploadFile" }}>Save File</button>
+                                    </span>
+                                  </div>
+                                </td>
+                              </tr>
+                             
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel box box-success">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="false">
+                            <i class="fa fa-upload"></i> TCS PDO File
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" $result>
+                        <div class="box-body">
+                          <table id="sampleUploadsBAE" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                              <tr>
+                                <th>CN No</th>
+                                <th>Orgn Dstn</th>
+                                <th>Pickup  <br><small>(Month/Date/FullYear)</small></th>
+                                <th>Delivery Date <br><small>(Month/Date/FullYear)</small></th>
+                                <th>Delivery Time <br><small>(Hour:Minute:Second)</small></th>
+                                <th>Received By</th>
+                                <th>Status</th>
+                                <th>Short Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="8" width="100%" >
+                                  <div class="form-group input-group ">
+                                    {{input type='file' class="form-control filestyle" data-buttonName="btn-primary" data-buttonText="Upload" data-icon="true" data-placeholder="TCS PDO file" data-iconName="fa fa-upload" name="atmtcspdobookinguploadFile" id="atmtcspdobookinguploadFile" value=fsatmuploadFile3 valueBinding="files[]" multiple="multiple" }}
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-primary btn-flat" type="button" {{action "uploadAtmBookingFile" "atmtcspdobookinguploadFile" }}>Save File</button>
+                                    </span>
+                                  </div>
+                                </td>
+                              </tr>                             
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div> --}}
+          </div>
+        </div>
+        <div class="box-footer with-border">
+          <h6 class="box-title"><i>Note: Header name spell must be match. Excluding <b>(...)</b></i></h6>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

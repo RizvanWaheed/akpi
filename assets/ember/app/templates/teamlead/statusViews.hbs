@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-abacus" id="Agents-Time-and-Ticket-Stats">
+			<div class="box-header">
+				<div class="col-md-6">
+					<h3 class="box-title">Agents Time and Ticket Stats</h3>
+					<!--  <small class="label pull-right bg-green">Total Tickets: {zzz{zzzticketTotalszz}zz}zz</small> -->
+				</div>
+				<div class="form-group form-group-sm col-md-6 col-sm-6 col-xs-12">
+					<label for="user_id" class="col-md-4">Team Lead</label>
+					<div class="col-md-8 input-group">
+						{{view "select" class="form-control input-sm"  contentBinding="model"  id="teamlead_id" optionValuePath="content.employee_id" optionLabelPath="content.name" valueBinding="teamlead"  prompt="Select Teamlead..."}}
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-abacus btn-flat btn-sm pull-right"
+								{{action "reload" }}>
+								<i class="fa fa-refresh"></i> Reload
+							</button>
+						</span>
+					</div>
+				</div>
+			</div><!-- /.box-header -->
+			<div class="box-body" style="height:400px; overflow-y:auto; overflow-x:hidden">
+				<div class="table-responsive no-padding">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Force</th>
+								<th>ASM ID</th>
+								<th>User</th>
+								<th>Break</th>
+								<th>Working</th>
+								<th>Total</th>
+								<th>Current Status</th>
+								<th>Tickets Count</th>
+								<th>Avg. Ticket Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each tlStatusViews in agentsData}}
+							<tr>
+								<td>
+									<button type="submit" class="btn btn-info btn-flat btn-xs pull-right"
+										{{action "logout" tlStatusViews }}><i class="fa fa-logout"></i> Logout
+									</button>
+								</td>
+								<td>{{tlStatusViews.sip}}</td>
+								<td>{{tlStatusViews.name}}</td>
+								<td>{{tlStatusViews.break}}</td>
+								<td>{{tlStatusViews.working}}</td>
+								<td>{{tlStatusViews.total}}</td>
+								<td>{{tlStatusViews.current}}</td>
+								<td>{{tlStatusViews.tickets}}</td>
+								<td>{{tlStatusViews.avg}}</td>
+							</tr>
+							{{else}}
+							<tr>
+								<td></td>
+								<td colspan="8"> No Ticket Found (select teamlead and click on reload button to check).
+								</td>
+								<td></td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

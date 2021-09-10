@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-abacus">
+			<div class="box-header">
+				<h3 class="box-title">Reporting Agents List</h3>
+				{{!-- <span class="pull-right"><button class="btn btn-abacus btn-flat btn-sm" {{action "add" target="view"  }}>Add New</button></span> --}}
+			</div><!-- /.box-header -->
+			<div class="box-body" style="height:400px; overflow-y:auto; overflow-x:hidden">
+				<div class="row">
+					<div class="form-group form-group-sm col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<label for="appointmentname">Agent ID <small></small></label>
+						{{input type="hidden" valueBinding="agent.id" }}
+						<div class="input-group input-group-sm">
+							{{input type="number" class="form-control input-sm" placeholder="Enter Agent ID" valueBinding="agent.login"  key-up="searchKeyUp" }}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button"
+									{{action "searchAgent" agent}}> <i
+										class="fa fa-search"></i>{{!--  Find! --}}</button>
+								<button class="btn btn-abacus btn-flat btn-sm" {{bind-attr disabled=addButton}}
+									type="button" {{action "addAgent" agent}}> <i
+										class="fa fa-plus"></i>{{!--  Find! --}}</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<label for="appointmentmsisdn">Agent Name</label>
+						{{input class="form-control input-sm" disabled=true valueBinding="agent.name" }}
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<label for="appointmentname">Reporting TO</label>
+						{{input class="form-control input-sm" disabled=true valueBinding="agent.reporting" }}
+					</div>
+					<div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+						<label>Role</label>
+						{{input type="email" class="form-control input-sm" valueBinding="agent.role" disabled=true }}
+					</div>
+				</div>
+				<div class="table-responsive no-padding">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Login</th>
+								<th>Role</th>
+								<th>Reporting To</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each agents in paginatedContent}}
+							<tr>
+								<td>{{agents.name}}</td>
+								<td>{{agents.login}}</td>
+								<td>{{agents.role_id.name}}</td>
+								<td>{{agents.reporting_id.name}}</td>
+								{{!-- 	<td>
+                <button class="btn btn-success btn-flat btn-xs" {{action "edit" agents  target="view"  }}>Edit</button>
+                <button class="btn btn-danger btn-flat btn-xs" {{action "delete" agents }}>Delete</button>
+              </td> --}}
+							</tr>
+							{{/each}}</tbody>
+					</table>
+				</div>
+			</div><!-- /.box-body -->
+			{{#if hasPages}}
+			<div class="box-footer clearfix">
+				<ul class="pagination pagination-sm no-margin pull-right">
+					{{#if prevPage}}
+					<li><a href="#" {{action "selectPage" prevPage}}>&laquo;</a></li>
+					{{else}}
+					<li class="disabled"><a>&laquo;</a></li>
+					{{/if}}
+					{{#each pages itemController="page"}}
+					<li {{bind-attr class="active disabled"}}><a href="#" {{action "selectPage" number}}>{{number}}</a>
+					</li>
+					{{/each}}
+					{{#if nextPage}}
+					<li><a href="#" {{action "selectPage" nextPage}}>&raquo;</a></li>
+					{{else}}
+					<li class="disabled"><a>&raquo;</a></li>
+					{{/if}}
+				</ul>
+			</div>
+			{{/if}}
+		</div><!-- /.box -->
+	</div><!-- /.col -->
+</div>

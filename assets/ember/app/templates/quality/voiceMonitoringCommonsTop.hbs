@@ -1,0 +1,158 @@
+<div class="box box-abacus">
+    <div class="box-body">
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Monitoring</i></div>
+                {{view "select" class="form-control input-sm"  content=monitoredBy  id="forQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" style="border-left: 0px;" valueBinding="monitoring.monitoring_for_id"  prompt="Select monitoring to ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Monitoring To</i></div>
+                {{view "select" class="form-control"  style="border-left: 0px;"   content=monitorBelons  id="belongQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.monitoring_belongs"  prompt="Select Monitoring ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Ticket ID/Phone #</i></div>
+                {{input type="number" class="form-control" style="border-left: 0px;" valueBinding="monitoring.ticket_no" id="ticketQualityMonitor" }}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Booking ID</i></div>
+                {{input type="number" class="form-control" style="border-left: 0px;" valueBinding="monitoring.booking_no" id="bookingQualityMonitor" }}
+            </div>
+        </div>
+        <!-- <div class="bootstrap-timepicker">
+            <div class="form-group col-sm-3 ">
+                <div class="input-group input-group-sm">    
+	                <div class="input-group-addon  input-group-sm" style="border-color: #38b64d;"><i class="fa">Date</i></div>
+	                <div class="input-group  input-group-sm" >
+		                {//{input class="form-control" valueBinding="monitori//ng.date" id="dateQualityMonitor" }//}
+	                    <div class="input-group-addon  input-group-sm">
+	                      <i class="fa fa-calendar"></i>
+	                    </div>
+                    </div>
+	                
+                </div>
+            </div>
+        </div>-->
+
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Agent Name</i></div>
+                {{view "select" class="form-control"  content=agents  id="agentNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.agent_id" prompt="Select an agent ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">TL Name.</i></div>
+                {{view "select" class="form-control"  content=teamleads  id="tlNameQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.tl_id"  prompt="Select agent TL ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa"> Name</i></div>
+                {{input class="form-control" valueBinding="monitoring.customer" }}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Language</i></div>
+                {{view "select" class="form-control"  content=emailLanguage id="emailLanguageQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_language_id"
+                 prompt="Select email language ..."}}
+            </div>
+        </div>
+        {{!-- <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">    
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Reason</i></div>
+                {{view "select" class="form-control"  content=emailDriverReasonSub id="subreasonQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_sub_reason_id"  prompt="Select Sub Reason ..."}}
+            </div>
+        </div> 
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">    
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Reason</i></div>
+                {{view "select" class="form-control"  content=emailDriverReason id="reasonQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_reason_id"  prompt="Select Reason ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">    
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Category</i></div>
+                {{view "select" class="form-control"  content=emailDriverSub id="subemailDriverQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_sub_driver_id"  prompt="Select Sub Category ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">    
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Category</i></div>
+                {{view "select" class="form-control"  content=emailDriver id="emailDriverQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_driver_id"  prompt="Select Category ..."}}
+            </div>
+        </div>
+   {{#if customerShow}} --}}
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Reason</i></div>
+                {{view "select" class="select2 form-control"  content=emailDriverReasonSub optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_sub_reason_id"  prompt="Select Sub Reason ..."}}
+            </div>
+        </div>
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Reason</i></div>
+                {{view "select" class="form-control input-sm" contentBinding="emailDriverReason"  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_reason_id" disabled=true prompt="Select Reason Type ..."}}
+            </div>
+        </div>
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Sub Category</i></div>
+                {{view "select" class="form-control"  content=emailDriverSub optionValuePath="content.id" optionLabelPath="content.name" disabled=true valueBinding="monitoring.email_sub_driver_id"  prompt="Select Sub Category ..."}}
+            </div>
+        </div>
+        <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Category</i></div>
+                {{view "select" class="form-control  input-sm " contentBinding="emailDriver" optionValuePath="content.id" optionLabelPath="content.name" disabled=true value=monitoring.email_driver_id  prompt="Select Category Type ..." disbaled=true}}
+            </div>
+        </div>
+        {{!--  </div>
+        <div class="row  no-padding" {{bind-attr style=emailDriverSubStyle }}>         
+        {{else}}
+          <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12 " >
+            <div class="input-group input-group-sm">
+              <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Reason</i></div>
+              {{view "select" class=" select2 form-control"  content=emailDriverSub id="emailDriverSubID2" optionValuePath="content.id" optionLabelPath="content.name"  valueBinding="monitoring.email_reason_id"  prompt="Select Reason ..."}}
+            </div>
+          </div>        
+          <div class="form-group form-group-sm col-md-3 col-sm-6 col-xs-12" >
+            <div class="input-group input-group-sm">
+              <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Category</i></div>
+              {{view "select" class="form-control  input-sm " contentBinding="emailDriver"  id="emailDriverID2" optionValuePath="content.id" optionLabelPath="content.name" disabled=true value=monitoring.email_driver_id  prompt="Select Category Type ..." disbaled=true}}
+            </div>
+          </div>
+        {{/if}}
+        --}}
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">City</i></div>
+                {{view "select" class="form-control"  content=city id="cityQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.city_id"  prompt="Select City ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Country</i></div>
+                {{view "select" class="form-control"  content=country id="countryQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.country_id"  prompt="Select Country ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">Type</i></div>
+                {{view "select" class="form-control"  content=emailType id="emailTypeQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_type_id"  prompt="Select email type ..."}}
+            </div>
+        </div>
+        <div class="form-group col-sm-3 ">
+            <div class="input-group input-group-sm">
+                <div class="input-group-addon" style="border-color: #38b64d;"><i class="fa">About</i></div>
+                {{view "select" class="form-control"  content=emailAbout id="emailAboutQualityMonitor" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="monitoring.email_about_id"  prompt="Select email about ..."}}
+            </div>
+        </div>
+    </div><!-- /.box-body -->
+</div>
