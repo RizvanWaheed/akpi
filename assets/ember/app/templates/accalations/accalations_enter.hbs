@@ -1,0 +1,281 @@
+<div class="row">
+	<div class="col-md-6">
+		<form role="form" id="formAccalations" method="POST" enctype="multipart/form-data"
+			{{action "save" on="submit"}}>
+			<div class="box" style="border-top: 0px;">
+				{{!-- <div class="box-header">
+				  <h3 class="box-title">Create Ticket</h3>
+				</div> --}}
+				<div class="box-body">
+					{{input type="hidden" id="idAccalation" value=accalation.id }}
+					{{!-- <div class="form-group form-group-sm col-xs-6 ">
+				      <label for="id">Accalation No.<small>(Registered accalation)</small></label>
+				      	<div class="input-group">
+					      	{{input class="form-control  input-sm" label="id" id="idAccalation" placeholder="Accalation No" value=accalation.id  disabled=editMode }}	
+					      	<span class="input-group-btn">
+			                	<button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "findNumber" this}} {{bind-attr disabled=editMode}} > <i class="fa fa-search"></i></button>
+			             	</span>     
+			          	</div>
+				    </div>
+				    <div class="form-group form-group-sm col-xs-6 ">
+				      	<label for="phoneNumber">Calling No.<small>92xxxxxxxxxx</small></label>
+				      	<div class="input-group">
+					      	{{input class="form-control  input-sm" label="MSISDN" id="msisdnAccalation" placeholder="Calling No" value=accalation.msisdn  }}	
+					      	<span class="input-group-btn">
+			                	<button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "findMsisdn" this}} {{bind-attr disabled=editMode}} > <i class="fa fa-search"></i></button>
+			             	</span>     
+			          	</div>
+				    </div> --}}
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="phoneNumber">Ticket ID</label>
+						<div class="input-group">
+							{{input class="form-control  input-sm" label="Contact Mobile" id="ticketIdAccalation" placeholder="Enter Ticket ID" value=accalation.ticket_id disabled=editMode}}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button"
+									{{action "findTicket" this}} {{bind-attr disabled=editMode}}> <i
+										class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-xs-6">
+						<label for="address">Booking ID</label>
+						<div class="input-group">
+							{{input class="form-control  input-sm" id="bookingIdAccalation" placeholder="Enter Booking ID" value=accalation.booking_id disabled=editMode}}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button"
+									{{action "findBooking" this}} {{bind-attr disabled=editMode}}> <i
+										class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="phoneNumber">Customer Name</label>
+						{{input class="form-control  input-sm" label="Complainer Name" id="nameAccalation" placeholder="Enter Complainer Name" value=accalation.name disabled=editMode }}
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="phoneNumber">Customer Mobile #</label>
+						<div class="input-group">
+							{{input class="form-control  input-sm" label="Contact Mobile" id="mobileAccalation" placeholder="Enter Contact Mobile" value=accalation.mobile disabled=editMode}}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button"
+									{{action "findMsisdn" this}} {{bind-attr disabled=editMode}}> <i
+										class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-xs-6">
+						<label for="address">Customer Email</label>
+						<div class="input-group">
+							{{input class="form-control  input-sm" id="emailAccalation" placeholder="Enter Complainer Email" value=accalation.email disabled=editMode}}
+							<span class="input-group-btn">
+								<button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "findEmail" this}}
+									{{bind-attr disabled=editMode}}> <i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="cities">City</label>
+						{{view "select" class="form-control input-sm" contentBinding="cities" id="cityAccalation" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select City..." valueBinding="accalation.domain_id" disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-12">
+						<label for="description">Customer Statement</label>
+						{{textarea class="form-control " id="customerStatmentAccalation" placeholder="Enter Customer Statement" rows=4 value=accalation.statement style="hight:40px !important;" disabled=editMode }}
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="phoneNumber">Captain Name</label>
+						{{input class="form-control  input-sm" label="Captain Name" id="captainNameAccalation" placeholder="Enter Captain Name" value=accalation.cname disabled=editMode }}
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="phoneNumber">Captain Contact</label>
+						{{input class="form-control  input-sm" label="Captain Contact" id="captainContactAccalation" placeholder="Enter Captain Contact" value=accalation.cmobile disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-12">
+						<label for="description">Captain Statement</label>
+						{{textarea class="form-control " id="captainStatmentAccalation" placeholder="Enter Captain Statement" rows=4 value=accalation.cstatement style="hight:40px !important;" disabled=editMode }}
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="products">Department </label>
+						{{view "select" class="form-control  input-sm" contentBinding="departments" id="department_id" optionValuePath="content.id" optionLabelPath="content.name" valueBinding="accalation.department_id" prompt="Select Escalation Department..." disabled=editMode}}
+					</div>
+					<div class="form-group form-group-sm col-xs-6 ">
+						<label for="models">Sub Departments</label>
+						{{view "select" class="form-control  input-sm" contentBinding="subDepartments" id="sub_department_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select Escalation Sub-Department..." valueBinding="accalation.sub_department_id" disabled=editMode}}
+					</div>
+					{{!--
+				    <div class="form-group form-group-sm col-xs-6 ">
+				       <label for="problems">Sub Reason</label>
+				       {{view "select" class="select2 form-control input-sm" contentBinding="sub_reasons" id="sub_reason_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a reason..." valueBinding="accalation.sub_reason_id" disabled=editMode}}
+				    </div>
+				    <div class="form-group form-group-sm col-xs-6 ">
+				       <label for="problems">Reason</label>
+				       {{view "select" class="form-control input-sm" contentBinding="reasons" id="reason_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a reason..." valueBinding="accalation.reason_id" disabled=editMode2}}
+				    </div>
+				     <div class="form-group form-group-sm col-xs-6 ">
+				       <label for="problems">Sub Category</label>
+				       {{view "select" class="form-control input-sm" contentBinding="sub_categories" id="sub_category_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a reason..." valueBinding="accalation.sub_category_id" disabled=editMode2}}
+				    </div>
+				    <div class="form-group form-group-sm col-xs-6 ">
+				       <label for="problems">Category</label>
+				       {{view "select" class="form-control input-sm" contentBinding="categories" id="category_id" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a category..." valueBinding="accalation.category_id" disabled=editMode2}}
+				    </div> --}}
+					{{!--   <div class="form-group-sm col-xs-6 ">
+				        <label for="purchaseDate">Purchase Date</label>
+				        <div class="input-group date">
+						    {{input class="form-control " label="Purchase Date" id="purchaseDate" placeholder="Enter Purchase Date" value=complain.purchaseDate }}
+						    <div class="input-group-addon">
+		                    	<i class="fa fa-calendar"></i>
+		                    </div>
+						</div>      
+				    </div> 
+ 					<div class="form-group-sm col-xs-12"> 
+                        {{input type='file' class="form-control filestyle" data-buttonName="btn-abacus" data-buttonText="Upload" data-icon="true" data-placeholder="File" data-iconName="fa fa-paperclip" data-buttonBefore="true"  name="abacusFile" id="abacusFile" value=abacusFile  multiple="multiple" }}
+                    </div>--}}
+
+					<div class="form-group form-group-sm col-xs-6">
+						<label for="status">Current Status</label>
+						{{view "select" id="stateComplain" class="form-control " content=accalationStates  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="accalation.accalationLog.state_id"  disabled=editMode }}
+					</div>
+					{{#if editMode}}
+					<div class="form-group form-group-sm col-xs-6">
+						<label for="status">Status</label>
+						{{view "select" id="stateComplain2" class="form-control " content=accalationStates  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="accalationLog.state_id"}}
+					</div>
+					<div id="commentArea" class="form-group form-group-sm col-xs-12">
+						<label for="description">Comment</label>
+						{{textarea class="form-control " id="commAccalation" placeholder="Enter comment" value=accalationLog.remarks}}
+					</div>
+					{{else}}
+					<div class="form-group form-group-sm col-xs-12">
+						<label for="description">Expected Solution</label>
+						{{textarea class="form-control " id="remarksAccalation" placeholder="Enter Expected Solution" value=accalation.accalationLog.remarks style="hight:40px !important;" disabled=editMode }}
+					</div>
+					{{/if}}
+				</div>
+				<div class="box-footer pull-right">
+					<button type="submit" id="btnAccalationEditSave" class="btn btn-abacus btn-flat btn-sm"><i
+							class="fa fa-save"></i> Save </button>
+					<button type="reset" id="btnAccalationEditReset" class="btn btn-abacus btn-flat btn-sm"
+						{{action "reset" this  }}> <i class="fa fa-undo"></i> Reset </button>
+				</div>
+			</div><!-- /.box -->
+		</form>
+	</div>
+	<div class="col-md-6">
+		<div class="box" style="border-top: 0px;">
+			<div class="box-header">
+				{{!-- <div class="row col-md-12 col-sm-12 col-xs-12">
+		      	<span class="btn btn-flat btn-app">Pending <br> Escalation <span class="badge badge bg-teal">{{mgmtPendingComplaint}}</span></span>
+             	<span class="btn btn-flat btn-app">Closed <br> Escalation <span class="badge bg-maroon">{{mgmtHoldComplaint}}</span></span>
+		
+            <span class="btn btn-flat btn-app">New <br> Complaints <span class="badge bg-purple">{{mgmtNewComplaint}}</span></span> --}}
+
+				{{!--   <span class="pull-right-container">
+                <small class="label pull-right bg-green">New </small>
+              </span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">Pending </small>
+              </span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">Hold </small>
+              </span> 
+          </div>--}}
+				<i class="fa fa-comments-o"></i>
+				<h3 class="box-title">Comment</h3>
+			</div>
+			<div class="box-body chat" id="chat-box">
+				{{#each com in accalationLogs}}
+				<p class="message">
+					<a href="javascript:;" class="name">
+						<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>{{com.created}}</small>
+						{{com.created_by.name}}
+					</a>
+				<div>
+					<dl>
+						<dt>{{com.state}}</dt>
+						<dd>{{com.remarks}}.</dd>
+						<dd>{{!-- <img {{bind-attr src=com.photo }} alt="No Image" width="250px"> --}}</dd>
+					</dl>
+				</div>
+				</p>
+				{{else}}
+				<p> No Record Found </p>
+				{{/each}}
+				<!-- chat item -->
+			</div><!-- /.chat -->
+			<div class="box-footer">
+			</div>
+		</div>
+	</div><!-- /.col -->
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Seached Accalations <small>List </small> </h3>
+			</div><!-- /.box-header -->
+			<div class="box-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>Ticket ID</th>
+						<th>Booking ID</th>
+						<th>Accalation Date</th>
+						<th>City</th>
+						<th>Department</th>
+						<th>Sub Department</th>
+						<th>Customer Name</th>
+						<th>Customer Contact</th>
+						<th>Customer Email</th>
+						<th>Actions</th>
+					</tr>
+					{{#each com in paginatedContent}}
+					<tr>
+						<td>{{com.ticket_id}}</td>
+						<td>{{com.booking_id}}</td>
+						<td>{{com.created}}</td>
+						<td>{{com.domain_id.name}}</td>
+						<td>{{com.department_id.name}}</td>
+						<td>{{com.sub_department_id.name}}</td>
+						<td>{{com.name}}</td>
+						<td>{{com.mobile}}</td>
+						<td>{{com.email}}</td>
+						<td>
+							{{#if com.status}}
+							<button class="btn btn-warning btn-flat btn-xs" {{action "edit" com  }}> <i
+									class="fa  fa-edit"></i> Edit </button>
+							{{else}}
+							<button class="btn btn-warning btn-flat btn-xs" {{action "view" com  }}> <i
+									class="fa  fa-newspaper-o"></i> Closed </button>
+							{{/if}}
+
+						</td>
+					</tr>
+					{{else}}
+					<tr>
+						<td colspan="5"> No Record Found </td>
+					</tr>
+					{{/each}}
+				</table>
+			</div><!-- /.box-body -->
+			{{#if hasPages}}
+			<div class="box-footer clearfix">
+				<ul class="pagination pagination-sm no-margin pull-right">
+					{{#if prevPage}}
+					<li><a href="#" {{action "selectPage" prevPage}}>&laquo;</a></li>
+					{{else}}
+					<li class="disabled"><a>&laquo;</a></li>
+					{{/if}}
+					{{#each pages itemController="page"}}
+					<li {{bindAttr class="active disabled"}}><a href="#" {{action "selectPage" number}}>{{number}}</a>
+					</li>
+					{{/each}}
+					{{#if nextPage}}
+					<li><a href="#" {{action "selectPage" nextPage}}>&raquo;</a></li>
+					{{else}}
+					<li class="disabled"><a>&raquo;</a></li>
+					{{/if}}
+				</ul>
+			</div>
+			{{/if}}
+		</div><!-- /.box -->
+	</div><!-- /.col -->
+</div>

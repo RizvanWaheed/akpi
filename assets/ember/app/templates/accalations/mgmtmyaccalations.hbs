@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <!-- <div class="box-header">
+        <div class="form-group form-group-sm col-md-4 col-sm-12 col-xs-12">
+          <h3 class="box-title">Complaints List</h3>
+        </div>
+      </div>/.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="form-group-sm col-md-3 col-sm-12 col-xs-12">
+            <span class="btn btn-flat btn-app">New <br> Escalation <span
+                class="badge bg-purple">{{mgmtNewComplaint}}</span></span>
+            <span class="btn btn-flat btn-app">Pending <br> Escalation <span
+                class="badge badge bg-teal">{{mgmtPendingComplaint}}</span></span>
+            <span class="btn btn-flat btn-app">Hold <br> Escalation <span
+                class="badge bg-maroon">{{mgmtHoldComplaint}}</span></span>
+            {{!--   <span class="pull-right-container">
+                <small class="label pull-right bg-green">New </small>
+              </span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">Pending </small>
+              </span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">Hold </small>
+              </span> --}}
+          </div>
+          <div class="form-group-sm col-md-3 col-sm-12 col-xs-12 ">
+            <label for="seachTicketDate">Ticket Date</label>
+            <div class="input-group date">
+              {{input class="form-control" readonly="true" id="seachTicketDate" valueBinding="findByMyFilter.accalation_date" }}
+              <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+          <div class="form-group-sm col-md-3 col-sm-12 col-xs-12 ">
+            <label for="searchComplaintSubDepartment">Sub Departments</label>
+            {{view "select" class="form-control  input-sm" contentBinding="subDepartments" id="searchComplaintSubDepartment" optionValuePath="content.id" optionLabelPath="content.name" prompt="Sub-Department..." valueBinding="findByMyFilter.accalation_sub_department"}}
+          </div>
+          <div class="form-group-sm col-md-3 col-sm-12 col-xs-12">
+            <label for="searchComplaintState">Complaint Status</label>
+            <div class="input-group">
+              {{view "select" id="searchComplaintState" class="form-control" content=accalationStates  optionValuePath="content.id" optionLabelPath="content.name" valueBinding="findByMyFilter.accalation_status" prompt="Select a Complaint status ..." }}
+              <span class="input-group-btn">
+                <button class="btn btn-abacus btn-flat btn-sm" type="button" {{action "findIn" findByMyFilter}}> <i
+                    class="fa fa-search"></i> Find</button>
+              </span>
+            </div>
+          </div>
+
+        </div>
+        {{!--  <div class="row" style="height:400px"> --}}
+        <div class="col-xs-12">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <tr>
+                <th>No.</th>
+                <th>MSISDN</th>
+                <th>Complaint Date</th>
+                <th>Sub Department</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Reason</th>
+                <th>Sub Reason</th>
+                <th>Complainer</th>
+                <th>Contact #</th>
+                <th>Complainer Email</th>
+                <th>Actions</th>
+              </tr>
+              {{#each com in paginatedContent}}
+              <tr>
+                <td>{{com.id}}</td>
+                <td>{{com.msisdn}}</td>
+                <td>{{com.created}}</td>
+                <td>{{com.sub_department_id.name}}</td>
+                <td>{{com.category_id.name}}</td>
+                <td>{{com.sub_category_id.name}}</td>
+                <td>{{com.reason_id.name}}</td>
+                <td>{{com.sub_reason_id.name}}</td>
+                <td>{{com.caller_id.name}}</td>
+                <td>{{com.caller_id.mobile}}</td>
+                <td>{{com.caller_id.email}}</td>
+                <td>
+                  {{#if com.status}}
+                  <button class="btn btn-warning btn-flat btn-xs" {{action "edit" com  }}> <i class="fa  fa-edit"></i>
+                    Edit </button>
+                  {{else}}
+                  <button class="btn btn-warning btn-flat btn-xs" {{action "view" com  }}> <i
+                      class="fa  fa-newspaper-o"></i> Closed </button>
+                  {{/if}}
+                </td>
+              </tr>
+              {{else}}
+              <tr>
+                <td colspan="5"> No Record Found </td>
+              </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
+        {{!--  </div> --}}
+      </div><!-- /.box-body -->
+      <!--  <div class="box-footer clearfix">
+              <button id="btnComplainLoadNew" class="btn btn-flat btn-danger btn-block" {//{actio/n "l/oadMoreNew" this}//}>Load More</button>
+            </div> -->
+
+    </div><!-- /.box -->
+  </div><!-- /.col -->
+</div>
