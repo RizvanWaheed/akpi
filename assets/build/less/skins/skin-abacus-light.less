@@ -1,0 +1,63 @@
+/*
+ * Skin: abacus
+ * -----------
+ */
+
+@import "../../bootstrap-less/mixins.less";
+@import "../../bootstrap-less/variables.less";
+@import "../variables.less";
+@import "../mixins.less";
+
+.skin-abacus-light {
+
+    //Navbar
+    .main-header {
+        .navbar {
+            .navbar-variant(#fff; @abacus; #f6f6f6; @abacus; );
+
+            .sidebar-toggle {
+                color: @abacus;
+
+                &:hover {
+                    background-color: darken(@abacus, 5%);
+                }
+            }
+
+            @media(max-width: @screen-header-collapse) {
+                .dropdown-menu {
+                    li {
+                        &.divider {
+                            background-color: @abacus;
+                        }
+
+                        a {
+                            color: @abacus;
+
+                            &:hover {
+                                background: darken(@abacus, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //Logo
+        .logo {
+            .logo-variant(#fff);
+        }
+
+        li.user-header {
+            background-color: @abacus;
+        }
+    }
+
+    //Content Header
+    .content-header {
+        background: transparent;
+    }
+
+    //Create the sidebar skin
+    .skin-abacus-sidebar(@abacus);
+
+}
